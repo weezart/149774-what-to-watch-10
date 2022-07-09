@@ -1,9 +1,16 @@
-import MainScreen from '../../pages/main/main';
+import MainScreen from '../../pages/main-screen/main-screen';
 
+const promoFilm = {
+  name: 'The Grand Budapest Hotel',
+  genre: 'Drama',
+  release: 2014,
+};
 
 function App(): JSX.Element {
+  const { name, genre, release } = promoFilm;
+
   return (
-    <MainScreen />
+    <MainScreen name={name} genre={genre} release={release} />
   );
 }
 
