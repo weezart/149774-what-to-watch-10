@@ -1,5 +1,3 @@
-import React from 'react';
-
 function FilmCardComponent(): JSX.Element {
   return (
     <article className="small-film-card catalog__films-card">
