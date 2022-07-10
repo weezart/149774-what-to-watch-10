@@ -1,4 +1,4 @@
-import FilmCardComponent from '../../components/film-card';
+import FilmCard from '../../components/film-card';
 
 function MyListScreen(): JSX.Element {
   return (
@@ -29,7 +29,7 @@ function MyListScreen(): JSX.Element {
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <div className="catalog__films-list">
-          {[Array.from({length: 9}, FilmCardComponent)].map((filmCard) => filmCard)}
+          {[Array.from({length: 9}, FilmCard)].map((filmCard) => filmCard)}
         </div>
       </section>
 

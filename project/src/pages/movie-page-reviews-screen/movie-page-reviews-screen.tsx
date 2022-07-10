@@ -1,5 +1,5 @@
 import React from 'react';
-import FilmCardComponent from '../../components/film-card';
+import FilmCard from '../../components/film-card';
 
 function MoviePageReviewsScreen(): JSX.Element {
   return (
@@ -189,7 +189,7 @@ function MoviePageReviewsScreen(): JSX.Element {
           <h2 className="catalog__title">More like this</h2>
 
           <div className="catalog__films-list">
-            {[Array.from({length: 4}, FilmCardComponent)].map((filmCard) => filmCard)}
+            {[Array.from({length: 4}, FilmCard)].map((filmCard) => filmCard)}
           </div>
         </section>
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import FilmCardComponent from '../../components/film-card';
+import FilmCard from '../../components/film-card';
 
-function MoviePageScreen(): JSX.Element {
+function MoviePageInListScreen(): JSX.Element {
   return (
     <React.Fragment>
       <section className="film-card film-card--full">
@@ -121,7 +121,7 @@ function MoviePageScreen(): JSX.Element {
           <h2 className="catalog__title">More like this</h2>
 
           <div className="catalog__films-list">
-            {[Array.from({length: 4}, FilmCardComponent)].map((filmCard) => filmCard)}
+            {[Array.from({length: 4}, FilmCard)].map((filmCard) => filmCard)}
           </div>
         </section>
 
@@ -143,4 +143,4 @@ function MoviePageScreen(): JSX.Element {
   );
 }
 
-export default MoviePageScreen;
+export default MoviePageInListScreen;

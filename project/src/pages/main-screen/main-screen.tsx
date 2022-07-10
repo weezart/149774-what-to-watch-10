@@ -1,5 +1,5 @@
 import React from 'react';
-import FilmCardComponent from '../../components/film-card';
+import FilmCard from '../../components/film-card';
 
 type MainScreenProps = {
   name: string;
@@ -108,7 +108,7 @@ function MainScreen({name, genre, release} : MainScreenProps): JSX.Element {
           </ul>
 
           <div className="catalog__films-list">
-            {[Array.from({length: 20}, FilmCardComponent)].map((filmCard) => filmCard)}
+            {[Array.from({length: 20}, FilmCard)].map((filmCard) => filmCard)}
           </div>
 
           <div className="catalog__more">
