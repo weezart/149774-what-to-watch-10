@@ -1,4 +1,4 @@
-import FilmCard from '../../components/film-card';
+import FilmCard from '../../components/film-card/film-card';
 import Logo from '../../components/logo/logo';
 import React from 'react';
 
