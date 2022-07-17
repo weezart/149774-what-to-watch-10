@@ -10,6 +10,7 @@ import AddReviewScreen from '../../pages/add-review-screen/add-review-screen';
 import PrivateRoute from '../private-route/private-route';
 import {Film, FilmInfo} from '../../types/film';
 
+
 type AppScreenProps = {
   name: string;
   genre: string;
