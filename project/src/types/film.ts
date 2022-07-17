@@ -11,11 +11,12 @@ export type FilmInfo = {
   imageBg: string;
   video: string;
   description: string;
-  rating: number;
-  scores: number;
+  ratingCount: number;
+  ratingLevel: string;
+  score: number;
   genre: string;
   director: string;
-  starring: [string];
+  starring: string[];
   runTime: number;
   release: number;
   isFavorite: boolean;

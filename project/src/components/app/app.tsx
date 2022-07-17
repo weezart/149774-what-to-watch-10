@@ -8,16 +8,17 @@ import MyListScreen from '../../pages/my-list-screen/my-list-screen';
 import MoviePageScreen from '../../pages/movie-page-screen/movie-page-screen';
 import AddReviewScreen from '../../pages/add-review-screen/add-review-screen';
 import PrivateRoute from '../private-route/private-route';
-import {Film} from '../../types/film';
+import {Film, FilmInfo} from '../../types/film';
 
 type AppScreenProps = {
   name: string;
   genre: string;
   release: number;
-  films: Film[]
+  films: Film[],
+  filmsInfo: FilmInfo[],
 }
 
-function App({name, genre, release, films}: AppScreenProps): JSX.Element {
+function App({name, genre, release, films, filmsInfo}: AppScreenProps): JSX.Element {
 
   return (
     <BrowserRouter>
@@ -32,7 +33,7 @@ function App({name, genre, release, films}: AppScreenProps): JSX.Element {
         />
         <Route
           path={AppRoute.Film}
-          element={<MoviePageScreen films={films} />}
+          element={<MoviePageScreen films={films} filmsInfo={filmsInfo} />}
         />
         <Route
           path={AppRoute.AddReview}

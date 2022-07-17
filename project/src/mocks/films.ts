@@ -59,8 +59,9 @@ export const filmsInfo: FilmInfo[] = [
     description:
       'In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge ' +
       'Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&apos;s friend and protege.',
-    rating: 8.9,
-    scores: 240,
+    score: 8.9,
+    ratingLevel: 'Very good',
+    ratingCount: 240,
     director: 'Wes Anderson',
     starring: ['Bill Murray'],
     runTime: 99,
@@ -78,10 +79,11 @@ export const filmsInfo: FilmInfo[] = [
       'In an effort to thwart Grindelwald&apos;s plans of raising pure-blood wizards to rule over all ' +
       'non-magical beings, Albus Dumbledore enlists his former student Newt Scamander, who agrees to help, ' +
       'though he&apos;s unaware of the dangers that lie ahead.',
-    rating: 6.5,
-    scores: 252,
+    score: 6.5,
+    ratingLevel: 'Good',
+    ratingCount: 252,
     director: 'David Yates',
-    starring: ['Eddie Redmayne, Katherine Waterston, Katherine Waterston'],
+    starring: ['Eddie Redmayne', 'Katherine Waterston', 'Katherine Waterston'],
     runTime: 99,
     genre: 'Fantastic',
     release: 2018,
@@ -96,10 +98,11 @@ export const filmsInfo: FilmInfo[] = [
     description:
       'The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up ' +
       'to their famous performance at Live Aid ',
-    rating: 7.9,
-    scores: 508,
+    score: 7.9,
+    ratingLevel: 'Good',
+    ratingCount: 508,
     director: 'Bryan Singer',
-    starring: ['Rami Malek, Lucy Boynton, Gwilym Lee'],
+    starring: ['Rami Malek', 'Lucy Boynton', 'Gwilym Lee'],
     runTime: 99,
     genre: 'Drama',
     release: 2018,
@@ -115,10 +118,11 @@ export const filmsInfo: FilmInfo[] = [
       'Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of ' +
       'Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king and takes ' +
       'the throne for himself.',
-    rating: 6.6,
-    scores: 106,
+    score: 6.6,
+    ratingLevel: 'Good',
+    ratingCount: 106,
     director: 'Justin Kurzel',
-    starring: ['Michael Fassbender, Jack Madigan, Frank Madigan'],
+    starring: ['Michael Fassbender', 'Jack Madigan', 'Frank Madigan'],
     runTime: 99,
     genre: 'History',
     release: 2015,
@@ -133,10 +137,11 @@ export const filmsInfo: FilmInfo[] = [
     description:
       'A biopic depicting the early years of legendary director and aviator Howard Hughes&apos; ' +
       'career from the late 1920s to the mid 1940s',
-    rating: 7.5,
-    scores: 353,
+    score: 7.5,
+    ratingLevel: 'Good',
+    ratingCount: 353,
     director: 'Martin Scorsese',
-    starring: ['Leonardo DiCaprio, Cate Blanchett, Kate Beckinsale, Alec Baldwin'],
+    starring: ['Leonardo DiCaprio', 'Cate Blanchett', 'Kate Beckinsale', 'Alec Baldwin'],
     runTime: 99,
     genre: 'Biography',
     release: 2004,
@@ -151,10 +156,11 @@ export const filmsInfo: FilmInfo[] = [
     description:
       'Kevin&apos;s mother struggles to love her strange child, despite the increasingly dangerous things he ' +
       'says and does as he grows up. But Kevin is just getting started, and his final act will be beyond anything anyone imagined.',
-    rating: 7.5,
-    scores: 893,
+    score: 7.5,
+    ratingLevel: 'Good',
+    ratingCount: 893,
     director: 'Lynne Ramsay',
-    starring: ['Tilda Swinton, John C. Reilly, Ezra Miller'],
+    starring: ['Tilda Swinton', 'John C. Reilly', 'Ezra Miller'],
     runTime: 99,
     genre: 'Thriller',
     release: 2011,
@@ -169,10 +175,11 @@ export const filmsInfo: FilmInfo[] = [
     description:
       'A look into the daily (or rather, nightly) lives of three vampires, who&apos;ve lived together ' +
       'for over 100 years, on Staten Island.',
-    rating: 8.6,
-    scores: 353,
+    score: 8.6,
+    ratingLevel: 'Very good',
+    ratingCount: 353,
     director: 'Jemaine Clement',
-    starring: ['Kayvan Novak, Natasia Demetriou, Matt Berry'],
+    starring: ['Kayvan Novak', 'Natasia Demetriou', 'Matt Berry'],
     runTime: 99,
     genre: 'Horror',
     release: 2019,
@@ -187,10 +194,11 @@ export const filmsInfo: FilmInfo[] = [
     description:
       'A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by ' +
       'a bear and left for dead by members of his own hunting team.',
-    rating: 8.0,
-    scores: 768,
+    score: 8.0,
+    ratingLevel: 'Very good',
+    ratingCount: 768,
     director: 'Alejandro G. Iñárritu',
-    starring: ['Leonardo DiCaprio, Will Poulter, Forrest Goodluck'],
+    starring: ['Leonardo DiCaprio', 'Will Poulter', 'Forrest Goodluck'],
     runTime: 99,
     genre: 'Western',
     release: 2015,
