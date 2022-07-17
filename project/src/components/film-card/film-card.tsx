@@ -1,16 +1,22 @@
-function FilmCard(): JSX.Element {
+import {Film} from '../../types/film';
+import {Link} from 'react-router-dom';
+
+type FilmCardProps = Film;
+
+function FilmCard({id, name, image} : FilmCardProps): JSX.Element {
+
   return (
     <article className="small-film-card catalog__films-card">
       <div className="small-film-card__image">
         <img
-          src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-          alt="Fantastic Beasts: The Crimes of Grindelwald"
+          src={image}
+          alt={name}
           width="280"
           height="175"
         />
       </div>
       <h3 className="small-film-card__title">
-        <a className="small-film-card__link" href="film-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
+        <Link className="small-film-card__link" to={`/films/${id}`}>{name}</Link>
       </h3>
     </article>
   );

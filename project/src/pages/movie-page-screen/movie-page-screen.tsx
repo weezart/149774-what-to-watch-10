@@ -1,8 +1,13 @@
 import React from 'react';
-import FilmCard from '../../components/film-card/film-card';
 import Logo from '../../components/logo/logo';
+import {Film} from '../../types/film';
+import FilmsList from '../../components/films-list/films-list';
 
-function MoviePageScreen(): JSX.Element {
+type MoviePageScreenProps = {
+  films: Film[]
+}
+
+function MoviePageScreen({films} : MoviePageScreenProps): JSX.Element {
   return (
     <React.Fragment>
       <section className="film-card film-card--full">
@@ -115,9 +120,7 @@ function MoviePageScreen(): JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <div className="catalog__films-list">
-            {[Array.from({length: 4}, FilmCard)].map((filmCard) => filmCard)}
-          </div>
+          <FilmsList films={[...films].slice(0, 4)}/>
         </section>
 
         <footer className="page-footer">

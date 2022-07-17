@@ -6,9 +6,17 @@ export type Film = {
 
 export type FilmInfo = {
   id: string;
+  name: string;
   poster: string;
   imageBg: string;
-  name: string;
-  genre: string,
-  release: number,
+  video: string;
+  description: string;
+  rating: number;
+  scores: number;
+  genre: string;
+  director: string;
+  starring: [string];
+  runTime: number;
+  release: number;
+  isFavorite: boolean;
 };

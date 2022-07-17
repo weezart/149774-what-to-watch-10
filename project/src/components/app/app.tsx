@@ -8,22 +8,23 @@ import MyListScreen from '../../pages/my-list-screen/my-list-screen';
 import MoviePageScreen from '../../pages/movie-page-screen/movie-page-screen';
 import AddReviewScreen from '../../pages/add-review-screen/add-review-screen';
 import PrivateRoute from '../private-route/private-route';
+import {Film} from '../../types/film';
 
-const promoFilm = {
-  name: 'The Grand Budapest Hotel',
-  genre: 'Drama',
-  release: 2014,
-};
+type AppScreenProps = {
+  name: string;
+  genre: string;
+  release: number;
+  films: Film[]
+}
 
-function App(): JSX.Element {
-  const { name, genre, release } = promoFilm;
+function App({name, genre, release, films}: AppScreenProps): JSX.Element {
 
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<MainScreen name={name} genre={genre} release={release} />}
+          element={<MainScreen name={name} genre={genre} release={release} films={films} />}
         />
         <Route
           path={AppRoute.Login}
@@ -31,7 +32,7 @@ function App(): JSX.Element {
         />
         <Route
           path={AppRoute.Film}
-          element={<MoviePageScreen />}
+          element={<MoviePageScreen films={films} />}
         />
         <Route
           path={AppRoute.AddReview}
