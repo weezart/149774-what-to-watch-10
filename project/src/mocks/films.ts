@@ -1,5 +1,11 @@
 import {Film} from '../types/film';
 
+export const promoFilm = {
+  name: 'The Grand Budapest Hotel',
+  genre: 'Drama',
+  release: 2014
+};
+
 export const films: Film[] = [
   {
     id: 'film1',

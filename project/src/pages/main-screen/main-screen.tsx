@@ -1,14 +1,16 @@
 import React from 'react';
-import FilmCard from '../../components/film-card/film-card';
+import FilmsList from '../../components/films-list/films-list';
 import Logo from '../../components/logo/logo';
+import {Film} from '../../types/film';
 
 type MainScreenProps = {
   name: string;
   genre: string;
   release: number;
+  films: Film[]
 }
 
-function MainScreen({name, genre, release} : MainScreenProps): JSX.Element {
+function MainScreen({name, genre, release, films} : MainScreenProps): JSX.Element {
   return (
     <React.Fragment>
       <section className="film-card">
@@ -102,9 +104,7 @@ function MainScreen({name, genre, release} : MainScreenProps): JSX.Element {
             </li>
           </ul>
 
-          <div className="catalog__films-list">
-            {[Array.from({length: 20}, FilmCard)].map((filmCard) => filmCard)}
-          </div>
+          <FilmsList films={films}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
