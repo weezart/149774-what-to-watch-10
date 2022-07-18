@@ -1,12 +1,22 @@
 import Logo from '../../components/logo/logo';
 import React from 'react';
+import {FilmInfo} from '../../types/film';
+import {useParams, Link} from 'react-router-dom';
 
-function AddReviewScreen(): JSX.Element {
+type AddReviewScreenProps = {
+  filmsInfo: FilmInfo[],
+}
+
+function AddReviewScreen({filmsInfo}: AddReviewScreenProps): JSX.Element {
+  const params = useParams();
+  const id = `${(params.id ? params.id.slice(1) : '0')}`;
+  const film = filmsInfo.find((item) => item.id === id) || filmsInfo[0];
+
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel"/>
+          <img src={film.imageBg} alt={film.name}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -17,7 +27,7 @@ function AddReviewScreen(): JSX.Element {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                <Link to={`/films/:${film.id}`} className="breadcrumbs__link">{film.name}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link" href="/">Add review</a>
@@ -38,7 +48,7 @@ function AddReviewScreen(): JSX.Element {
         </header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"
+          <img src={film.poster} alt={film.name && ' poster'} width="218"
             height="327"
           />
         </div>

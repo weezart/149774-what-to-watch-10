@@ -2,6 +2,7 @@ export type Film = {
   id: string;
   name: string;
   image: string;
+  video: string;
 };
 
 export type FilmInfo = {
@@ -9,7 +10,6 @@ export type FilmInfo = {
   name: string;
   poster: string;
   imageBg: string;
-  video: string;
   description: string;
   ratingCount: number;
   ratingLevel: string;

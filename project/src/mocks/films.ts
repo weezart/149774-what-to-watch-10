@@ -10,42 +10,50 @@ export const films: Film[] = [
   {
     id: 'film1',
     name: 'The Grand Budapest Hotel',
-    image: 'img/the-grand-budapest-hotel-poster.jpg'
+    image: 'img/the-grand-budapest-hotel-poster.jpg',
+    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 'film2',
     name: 'Fantastic Beasts: The Crimes of Grindelwald',
     image: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
+    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 'film3',
     name: 'Bohemian Rhapsody',
     image: 'img/bohemian-rhapsody.jpg',
+    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 'film4',
     name: 'Macbeth',
     image: 'img/macbeth.jpg',
+    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 'film5',
     name: 'Aviator',
     image: 'img/aviator.jpg',
+    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 'film6',
     name: 'We need to talk about Kevin',
     image: 'img/we-need-to-talk-about-kevin.jpg',
+    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 'film7',
     name: 'What We Do in the Shadows',
     image: 'img/what-we-do-in-the-shadows.jpg',
+    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: 'film8',
     name: 'Revenant',
     image: 'img/revenant.jpg',
+    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
 ];
 
@@ -55,7 +63,6 @@ export const filmsInfo: FilmInfo[] = [
     name: 'The Grand Budapest Hotel',
     poster: 'img/the-grand-budapest-hotel-poster.jpg',
     imageBg: 'img/bg-the-grand-budapest-hotel.jpg',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     description:
       'In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge ' +
       'Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&apos;s friend and protege.',
@@ -74,7 +81,6 @@ export const filmsInfo: FilmInfo[] = [
     name: 'Fantastic Beasts: The Crimes of Grindelwald',
     poster: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
     imageBg: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     description:
       'In an effort to thwart Grindelwald&apos;s plans of raising pure-blood wizards to rule over all ' +
       'non-magical beings, Albus Dumbledore enlists his former student Newt Scamander, who agrees to help, ' +
@@ -94,7 +100,6 @@ export const filmsInfo: FilmInfo[] = [
     name: 'Bohemian Rhapsody',
     poster: 'img/bohemian-rhapsody.jpg',
     imageBg: 'img/bohemian-rhapsody.jpg',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     description:
       'The story of the legendary British rock band Queen and lead singer Freddie Mercury, leading up ' +
       'to their famous performance at Live Aid ',
@@ -113,7 +118,6 @@ export const filmsInfo: FilmInfo[] = [
     name: 'Macbeth',
     poster: 'img/macbeth.jpg',
     imageBg: 'img/macbeth.jpg',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     description:
       'Macbeth, the Thane of Glamis, receives a prophecy from a trio of witches that one day he will become King of ' +
       'Scotland. Consumed by ambition and spurred to action by his wife, Macbeth murders his king and takes ' +
@@ -133,7 +137,6 @@ export const filmsInfo: FilmInfo[] = [
     name: 'Aviator',
     poster: 'img/aviator.jpg',
     imageBg: 'img/aviator.jpg',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     description:
       'A biopic depicting the early years of legendary director and aviator Howard Hughes&apos; ' +
       'career from the late 1920s to the mid 1940s',
@@ -152,7 +155,6 @@ export const filmsInfo: FilmInfo[] = [
     name: 'We need to talk about Kevin',
     poster: 'img/we-need-to-talk-about-kevin.jpg',
     imageBg: 'img/we-need-to-talk-about-kevin.jpg',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     description:
       'Kevin&apos;s mother struggles to love her strange child, despite the increasingly dangerous things he ' +
       'says and does as he grows up. But Kevin is just getting started, and his final act will be beyond anything anyone imagined.',
@@ -171,7 +173,6 @@ export const filmsInfo: FilmInfo[] = [
     name: 'What We Do in the Shadows',
     poster: 'img/what-we-do-in-the-shadows.jpg',
     imageBg: 'img/what-we-do-in-the-shadows.jpg',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     description:
       'A look into the daily (or rather, nightly) lives of three vampires, who&apos;ve lived together ' +
       'for over 100 years, on Staten Island.',
@@ -190,7 +191,6 @@ export const filmsInfo: FilmInfo[] = [
     name: 'Revenant',
     poster: 'img/revenant.jpg',
     imageBg: 'img/revenant.jpg',
-    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     description:
       'A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by ' +
       'a bear and left for dead by members of his own hunting team.',
