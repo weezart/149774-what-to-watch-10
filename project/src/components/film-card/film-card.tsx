@@ -1,12 +1,17 @@
-import {Film} from '../../types/film';
 import {Link} from 'react-router-dom';
 
-type FilmCardProps = Film;
+type FilmCardProps = {
+  id: string;
+  name: string;
+  image: string;
+  isActive: boolean,
+  makeCardActive: (id: string) => void
+};
 
-function FilmCard({id, name, image} : FilmCardProps): JSX.Element {
 
+function FilmCard({id, name, image, isActive, makeCardActive} : FilmCardProps): JSX.Element {
   return (
-    <article className="small-film-card catalog__films-card">
+    <article className={`small-film-card catalog__films-card ${ isActive ? 'active' : ''}` } onMouseOver={() => makeCardActive(id)}>
       <div className="small-film-card__image">
         <img
           src={image}
