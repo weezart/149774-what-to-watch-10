@@ -5,7 +5,7 @@ import {Film} from '../../types/film';
 
 
 type MyListScreenProps = {
-  films: Film[],
+  films: Film[];
 }
 
 function MyListScreen({films}: MyListScreenProps): JSX.Element {

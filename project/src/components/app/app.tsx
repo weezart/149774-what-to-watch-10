@@ -15,8 +15,8 @@ type AppScreenProps = {
   name: string;
   genre: string;
   release: number;
-  films: Film[],
-  filmsInfo: FilmInfo[],
+  films: Film[];
+  filmsInfo: FilmInfo[];
 }
 
 function App({name, genre, release, films, filmsInfo}: AppScreenProps): JSX.Element {

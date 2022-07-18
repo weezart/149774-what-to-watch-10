@@ -7,7 +7,7 @@ type MainScreenProps = {
   name: string;
   genre: string;
   release: number;
-  films: Film[]
+  films: Film[];
 }
 
 function MainScreen({name, genre, release, films} : MainScreenProps): JSX.Element {

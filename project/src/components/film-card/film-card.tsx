@@ -4,8 +4,8 @@ type FilmCardProps = {
   id: string;
   name: string;
   image: string;
-  isActive: boolean,
-  makeCardActive: (id: string) => void
+  isActive: boolean;
+  makeCardActive: (id: string) => void;
 };
 
 

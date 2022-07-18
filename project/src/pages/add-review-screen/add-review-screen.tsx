@@ -5,7 +5,7 @@ import {FilmInfo} from '../../types/film';
 import {useParams, Link} from 'react-router-dom';
 
 type AddReviewScreenProps = {
-  filmsInfo: FilmInfo[],
+  filmsInfo: FilmInfo[];
 }
 
 function AddReviewScreen({filmsInfo}: AddReviewScreenProps): JSX.Element {

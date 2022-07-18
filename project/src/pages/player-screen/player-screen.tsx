@@ -2,7 +2,7 @@ import {Film} from '../../types/film';
 import {useParams} from 'react-router-dom';
 
 type PlayerScreenProps = {
-  films: Film[],
+  films: Film[];
 }
 
 function PlayerScreen({films} : PlayerScreenProps): JSX.Element {

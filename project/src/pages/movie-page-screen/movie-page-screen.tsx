@@ -5,8 +5,8 @@ import FilmsList from '../../components/films-list/films-list';
 import {useParams, Link} from 'react-router-dom';
 
 type MoviePageScreenProps = {
-  films: Film[],
-  filmsInfo: FilmInfo[]
+  films: Film[];
+  filmsInfo: FilmInfo[];
 }
 
 function MoviePageScreen({films, filmsInfo} : MoviePageScreenProps): JSX.Element {
