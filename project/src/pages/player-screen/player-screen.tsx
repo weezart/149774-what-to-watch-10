@@ -1,7 +1,18 @@
-function PlayerScreen(): JSX.Element {
+import {Film} from '../../types/film';
+import {useParams} from 'react-router-dom';
+
+type PlayerScreenProps = {
+  films: Film[];
+}
+
+function PlayerScreen({films} : PlayerScreenProps): JSX.Element {
+  const params = useParams();
+  const id = `${(params.id ? params.id.slice(1) : '0')}`;
+  const film = films.find((item) => item.id === id) || films[0];
+
   return (
     <div className="player">
-      <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+      <video src={film.video} className="player__video" poster={film.image}></video>
 
       <button type="button" className="player__exit">Exit</button>
 
