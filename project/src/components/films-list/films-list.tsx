@@ -21,6 +21,7 @@ function FilmsList ({films}: FilmsListProps): JSX.Element {
           id={film.id}
           image={film.image}
           name={film.name}
+          video={film.video}
           isActive={(activeCardId === film.id)}
           makeCardActive={makeCardActive}
         />

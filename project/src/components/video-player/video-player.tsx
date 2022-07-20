@@ -1,6 +1,7 @@
-import { Film } from '../../types/film';
-
-type VideoPlayerProps = Film;
+type VideoPlayerProps = {
+  image: string;
+  video: string;
+};
 
 function VideoPlayer({video, image}: VideoPlayerProps): JSX.Element {
   return (
