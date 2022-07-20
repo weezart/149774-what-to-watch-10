@@ -8,12 +8,17 @@ type FilmCardProps = {
   video: string;
   isActive: boolean;
   makeCardActive: (id: string) => void;
+  makeCardInactive: () => void;
 };
 
 
-function FilmCard({id, name, image, video, isActive, makeCardActive} : FilmCardProps): JSX.Element {
+function FilmCard({id, name, image, video, isActive, makeCardActive, makeCardInactive} : FilmCardProps): JSX.Element {
   return (
-    <article className={`small-film-card catalog__films-card ${ isActive ? 'active' : ''}` } onMouseOver={() => makeCardActive(id)}>
+    <article
+      className={`small-film-card catalog__films-card ${ isActive ? 'active' : ''}` }
+      onMouseEnter={() => makeCardActive(id)}
+      onMouseLeave={() => makeCardInactive()}
+    >
       <div className="small-film-card__image">
         {isActive ? (
           <VideoPlayer image={image} video={video} />
