@@ -13,6 +13,10 @@ function FilmsList ({films}: FilmsListProps): JSX.Element {
     setActiveCardId(id);
   };
 
+  const makeCardInactive = () => {
+    setActiveCardId('');
+  };
+
   return (
     <div className="catalog__films-list">
       {films.map((film) => (
@@ -21,8 +25,10 @@ function FilmsList ({films}: FilmsListProps): JSX.Element {
           id={film.id}
           image={film.image}
           name={film.name}
+          video={film.video}
           isActive={(activeCardId === film.id)}
           makeCardActive={makeCardActive}
+          makeCardInactive={makeCardInactive}
         />
       ))}
     </div>
