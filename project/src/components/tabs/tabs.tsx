@@ -1,5 +1,8 @@
 import { FilmInfo } from '../../types/film';
 import React, {useState} from 'react';
+import FilmOverview from '../film-overview/film-overview';
+import FilmDetails from '../film-details/film-details';
+import FilmReviews from '../film-reviews/film-reviews';
 
 type TabsProps = {
   film: FilmInfo;
@@ -13,6 +16,17 @@ function Tabs({film} : TabsProps): JSX.Element {
 
     if (e.currentTarget.textContent !== null) {
       setActiveTab(e.currentTarget.textContent);
+    }
+  };
+
+  const renderFilmData = (tab: string) => {
+    switch(tab) {
+      case 'Overview':
+        return <FilmOverview film={film} />;
+      case 'Details':
+        return <FilmDetails film={film} />;
+      case 'Reviews':
+        return <FilmReviews />;
     }
   };
 
@@ -31,7 +45,7 @@ function Tabs({film} : TabsProps): JSX.Element {
           </li>
         </ul>
       </nav>
-      <div></div>
+      {renderFilmData(activeTab)}
     </React.Fragment>
   );
 }
