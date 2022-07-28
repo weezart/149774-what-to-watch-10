@@ -2,7 +2,7 @@ import {SyntheticEvent} from 'react';
 import {DEFAULT_GENRE} from '../../const';
 import {Film} from '../../types/film';
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {changeGenre, getFilms} from '../../store/action';
+import {changeGenre, getFilms, resetFilters} from '../../store/action';
 
 type GenresListProps = {
   films: Film[];
@@ -24,7 +24,11 @@ function GenresList({films}: GenresListProps): JSX.Element {
     const clickHandler = (evt: SyntheticEvent) => {
       evt.preventDefault();
       dispatch(changeGenre({genre}));
-      dispatch(getFilms());
+      if (genre === DEFAULT_GENRE) {
+        dispatch(resetFilters());
+      } else {
+        dispatch(getFilms());
+      }
     };
 
     genreListItems.push(
