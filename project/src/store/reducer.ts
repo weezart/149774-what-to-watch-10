@@ -11,7 +11,8 @@ const initialState = {
 const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(changeGenre, (state, action) => {
-      state.genre = action.payload;
+      const {genre} = action.payload;
+      state.genre = genre;
     })
     .addCase(getFilms, (state, action) => {
       if (state.genre === DEFAULT_GENRE) {

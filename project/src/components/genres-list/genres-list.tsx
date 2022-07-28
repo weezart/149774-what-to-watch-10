@@ -1,11 +1,16 @@
+import {SyntheticEvent} from 'react';
 import {DEFAULT_GENRE} from '../../const';
 import {Film} from '../../types/film';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {changeGenre, getFilms} from '../../store/action';
 
 type GenresListProps = {
   films: Film[];
 }
 
 function GenresList({films}: GenresListProps): JSX.Element {
+  const dispatch = useAppDispatch();
+  const currentGenre = useAppSelector((state) => state.genre);
   const genres: Set<string> = new Set();
   const genreListItems = [];
 
@@ -16,10 +21,19 @@ function GenresList({films}: GenresListProps): JSX.Element {
   }
 
   for (const genre of genres) {
+    const clickHandler = (evt: SyntheticEvent) => {
+      evt.preventDefault();
+      dispatch(changeGenre({genre}));
+      dispatch(getFilms());
+    };
+
     genreListItems.push(
       <li
+        onClick={clickHandler}
         key={genre}
-        className="catalog__genres-item"
+        className={`catalog__genres-item ${genre === currentGenre
+          ? 'catalog__genres-item--active'
+          : ''}`}
       >
         <a href="/" className="catalog__genres-link">{genre}</a>
       </li>
