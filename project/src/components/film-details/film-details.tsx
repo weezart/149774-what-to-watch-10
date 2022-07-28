@@ -7,8 +7,9 @@ type FilmDetailsProps = {
 
 function FilmDetails({film} : FilmDetailsProps): JSX.Element {
   const getDuration = (minutes: number) => {
-    const textHours = minutes / 60 > 0 ? `${Math.floor((minutes / 60))}h` : '';
-    const textMinutes = minutes % 60 !== 0 ? `${minutes % 60}m` : '';
+    const MINUTES_IN_HOUR = 60;
+    const textHours = minutes / MINUTES_IN_HOUR > 0 ? `${Math.floor((minutes / MINUTES_IN_HOUR))}h` : '';
+    const textMinutes = minutes % MINUTES_IN_HOUR !== 0 ? `${minutes % MINUTES_IN_HOUR}m` : '';
     return `${textHours} ${textMinutes}`;
   };
 

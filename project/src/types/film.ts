@@ -3,6 +3,7 @@ export type Film = {
   name: string;
   image: string;
   video: string;
+  genre: string;
 };
 
 export type FilmInfo = {
