@@ -3,13 +3,13 @@ import {useAppSelector} from '../../hooks';
 import FilmsList from '../../components/films-list/films-list';
 import GenresList from '../../components/genres-list/genres-list';
 import Logo from '../../components/logo/logo';
-import {Film} from '../../types/film';
+import {Films} from '../../types/film';
 
 type MainScreenProps = {
   name: string;
   genre: string;
   release: number;
-  films: Film[];
+  films: Films;
 }
 
 function MainScreen({name, genre, release, films} : MainScreenProps): JSX.Element {

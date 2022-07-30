@@ -1,11 +1,11 @@
 import {SyntheticEvent} from 'react';
 import {DEFAULT_GENRE} from '../../const';
-import {Film} from '../../types/film';
+import {Films} from '../../types/film';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {changeGenre, getFilms, resetFilters} from '../../store/action';
 
 type GenresListProps = {
-  films: Film[];
+  films: Films;
 }
 
 function GenresList({films}: GenresListProps): JSX.Element {

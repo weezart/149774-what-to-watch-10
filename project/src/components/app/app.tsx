@@ -8,14 +8,14 @@ import MyListScreen from '../../pages/my-list-screen/my-list-screen';
 import MoviePageScreen from '../../pages/movie-page-screen/movie-page-screen';
 import AddReviewScreen from '../../pages/add-review-screen/add-review-screen';
 import PrivateRoute from '../private-route/private-route';
-import {Film, FilmInfo} from '../../types/film';
+import {Films, FilmInfo} from '../../types/film';
 
 
 type AppScreenProps = {
   name: string;
   genre: string;
   release: number;
-  films: Film[];
+  films: Films;
   filmsInfo: FilmInfo[];
 }
 

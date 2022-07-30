@@ -1,12 +1,12 @@
 import React from 'react';
 import Logo from '../../components/logo/logo';
-import {Film, FilmInfo} from '../../types/film';
+import {Films, FilmInfo} from '../../types/film';
 import FilmsList from '../../components/films-list/films-list';
 import Tabs from '../../components/tabs/tabs';
 import {useParams, Link} from 'react-router-dom';
 
 type MoviePageScreenProps = {
-  films: Film[];
+  films: Films;
   filmsInfo: FilmInfo[];
 }
 
