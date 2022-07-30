@@ -15,7 +15,7 @@ export const fetchQuestionAction = createAsyncThunk<void, undefined, {
 }>(
   'data/fetchFilms',
   async (_arg, {dispatch, extra: api}) => {
-    const {data} = await api.get<Films>(APIRoute.Questions);
+    const {data} = await api.get<Films>(APIRoute.Films);
     dispatch(loadFilms(data));
   },
 );
