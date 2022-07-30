@@ -1,11 +1,18 @@
 import { createReducer } from '@reduxjs/toolkit';
-import {changeGenre, getFilms, resetFilters, loadFilms} from './action';
-import { DEFAULT_GENRE } from '../const';
-import { films } from '../mocks/films';
+import {changeGenre, getFilms, resetFilters, loadFilms, requireAuthorization} from './action';
+import { DEFAULT_GENRE, AuthorizationStatus } from '../const';
+import {Films} from '../types/film';
 
-const initialState = {
+type InitalState = {
+  genre: string,
+  films: Films,
+  authorizationStatus: string
+}
+
+const initialState: InitalState = {
   genre: DEFAULT_GENRE,
-  films: films,
+  films: [],
+  authorizationStatus: AuthorizationStatus.Unknown,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -22,6 +29,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadFilms, (state, action) => {
       state.films = action.payload;
+    })
+    .addCase(requireAuthorization, (state, action) => {
+      state.authorizationStatus = action.payload;
     });
 });
 
