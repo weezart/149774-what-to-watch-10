@@ -1,14 +1,11 @@
 import FilmsList from '../../components/films-list/films-list';
 import Logo from '../../components/logo/logo';
 import React from 'react';
-import {Film} from '../../types/film';
+import {useAppSelector} from '../../hooks';
 
+function MyListScreen(): JSX.Element {
+  const films = useAppSelector((state) => state.films);
 
-type MyListScreenProps = {
-  films: Film[];
-}
-
-function MyListScreen({films}: MyListScreenProps): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">

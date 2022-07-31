@@ -1,18 +1,15 @@
-import {Film} from '../../types/film';
 import {useParams} from 'react-router-dom';
+import {useAppSelector} from '../../hooks';
 
-type PlayerScreenProps = {
-  films: Film[];
-}
-
-function PlayerScreen({films} : PlayerScreenProps): JSX.Element {
+function PlayerScreen(): JSX.Element {
   const params = useParams();
   const id = `${(params.id ? params.id.slice(1) : '0')}`;
-  const film = films.find((item) => item.id === id) || films[0];
+  const films = useAppSelector((state) => state.films);
+  const film = films.find((item) => item.id === Number.parseInt(id, 10)) || films[0];
 
   return (
     <div className="player">
-      <video src={film.video} className="player__video" poster={film.image}></video>
+      <video src={film.videoLink} className="player__video" poster={film.previewImage}></video>
 
       <button type="button" className="player__exit">Exit</button>
 

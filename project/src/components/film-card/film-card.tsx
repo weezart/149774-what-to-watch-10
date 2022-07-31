@@ -2,12 +2,12 @@ import {Link} from 'react-router-dom';
 import VideoPlayer from '../video-player/video-player';
 
 type FilmCardProps = {
-  id: string;
+  id: number;
   name: string;
   image: string;
   video: string;
   isActive: boolean;
-  makeCardActive: (id: string) => void;
+  makeCardActive: (id: number) => void;
   makeCardInactive: () => void;
 };
 

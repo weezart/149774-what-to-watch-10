@@ -1,8 +1,8 @@
-import { FilmInfo } from '../../types/film';
+import { Film } from '../../types/film';
 
 
 type FilmDetailsProps = {
-  film: FilmInfo;
+  film: Film;
 };
 
 function FilmDetails({film} : FilmDetailsProps): JSX.Element {
@@ -39,7 +39,7 @@ function FilmDetails({film} : FilmDetailsProps): JSX.Element {
         </p>
         <p className="film-card__details-item">
           <strong className="film-card__details-name">Released</strong>
-          <span className="film-card__details-value">{film.release}</span>
+          <span className="film-card__details-value">{film.released}</span>
         </p>
       </div>
     </div>
