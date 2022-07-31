@@ -5,15 +5,20 @@ type FilmOverviewProps = {
   film: Film;
 };
 
+const RATING_AWESOME = 10;
+const RATING_VERY_GOOD = 8;
+const RATING_GOOD = 5;
+const RATING_NORMAL = 5;
+
 function FilmOverview({film} : FilmOverviewProps): JSX.Element {
   const getRatingLevel = (rating: number) => {
-    if (rating === 10) {
+    if (rating === RATING_AWESOME) {
       return 'Awesome';
-    } else if (rating >= 8 && rating < 10) {
+    } else if (rating >= RATING_VERY_GOOD && rating < RATING_AWESOME) {
       return 'Very good';
-    } else if (rating >= 5 && rating < 8) {
+    } else if (rating >= RATING_GOOD && rating < RATING_VERY_GOOD) {
       return 'Good';
-    } else if (rating >= 3 && rating < 5) {
+    } else if (rating >= RATING_NORMAL && rating < RATING_GOOD) {
       return 'Normal';
     } else {
       return 'Bad';
