@@ -9,7 +9,6 @@ import {fetchFilmAction, checkAuthAction} from './store/api-actions';
 
 store.dispatch(fetchFilmAction());
 
-
 store.dispatch(checkAuthAction());
 
 const root = ReactDOM.createRoot(

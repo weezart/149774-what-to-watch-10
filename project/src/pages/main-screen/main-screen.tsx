@@ -3,17 +3,16 @@ import {useAppSelector} from '../../hooks';
 import FilmsList from '../../components/films-list/films-list';
 import GenresList from '../../components/genres-list/genres-list';
 import Logo from '../../components/logo/logo';
-import {Films} from '../../types/film';
 
 type MainScreenProps = {
   name: string;
   genre: string;
   release: number;
-  films: Films;
 }
 
-function MainScreen({name, genre, release, films} : MainScreenProps): JSX.Element {
+function MainScreen({name, genre, release} : MainScreenProps): JSX.Element {
   const filmsList = useAppSelector((state) => state.films);
+  const filteredFilmsList = useAppSelector((state) => state.filteredFilms);
 
   return (
     <React.Fragment>
@@ -74,8 +73,8 @@ function MainScreen({name, genre, release, films} : MainScreenProps): JSX.Elemen
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
-          <GenresList films={films}/>
-          <FilmsList films={filmsList}/>
+          <GenresList films={filmsList}/>
+          <FilmsList films={filteredFilmsList}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
