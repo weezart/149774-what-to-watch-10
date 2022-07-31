@@ -10,6 +10,7 @@ function MoviePageScreen(): JSX.Element {
   const id = `${(params.id ? params.id.slice(1) : '0')}`;
   const films = useAppSelector((state) => state.films);
   const film = films.find((item) => item.id === Number.parseInt(id, 10)) || films[0];
+  const similarFilms = films.filter((filmA) => (filmA.genre === film?.genre) && filmA.id !== film?.id).slice(0, 4);
 
   return (
     <React.Fragment>
@@ -81,7 +82,7 @@ function MoviePageScreen(): JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmsList films={[...films].slice(0, 4)}/>
+          <FilmsList films={similarFilms}/>
         </section>
 
         <footer className="page-footer">
