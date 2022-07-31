@@ -1,11 +1,11 @@
-import { FilmInfo } from '../../types/film';
+import { Film } from '../../types/film';
 import React, {useState} from 'react';
 import FilmOverview from '../film-overview/film-overview';
 import FilmDetails from '../film-details/film-details';
 import FilmReviews from '../film-reviews/film-reviews';
 
 type TabsProps = {
-  film: FilmInfo;
+  film: Film;
 };
 
 function Tabs({film} : TabsProps): JSX.Element {

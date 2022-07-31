@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {Provider} from 'react-redux';
 import App from './components/app/app';
-import {films, filmsInfo} from './mocks/films';
 import ErrorMessage from './components/error-message/error-message';
 import {store} from './store';
 import {fetchFilmAction, fetchPromoFilmAction, checkAuthAction} from './store/api-actions';
@@ -20,10 +19,7 @@ root.render(
   <React.StrictMode>
     <Provider store = {store}>
       <ErrorMessage />
-      <App
-        films = {films}
-        filmsInfo = {filmsInfo}
-      />
+      <App />
     </Provider>
   </React.StrictMode>,
 );

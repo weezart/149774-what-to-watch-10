@@ -1,13 +1,10 @@
-import {Films} from '../../types/film';
 import {useParams} from 'react-router-dom';
+import {useAppSelector} from '../../hooks';
 
-type PlayerScreenProps = {
-  films: Films;
-}
-
-function PlayerScreen({films} : PlayerScreenProps): JSX.Element {
+function PlayerScreen(): JSX.Element {
   const params = useParams();
   const id = `${(params.id ? params.id.slice(1) : '0')}`;
+  const films = useAppSelector((state) => state.films);
   const film = films.find((item) => item.id === Number.parseInt(id, 10)) || films[0];
 
   return (
