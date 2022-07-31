@@ -4,13 +4,8 @@ import FilmsList from '../../components/films-list/films-list';
 import GenresList from '../../components/genres-list/genres-list';
 import Logo from '../../components/logo/logo';
 
-type MainScreenProps = {
-  name: string;
-  genre: string;
-  release: number;
-}
-
-function MainScreen({name, genre, release} : MainScreenProps): JSX.Element {
+function MainScreen(): JSX.Element {
+  const promo = useAppSelector((state) => state.promo);
   const filmsList = useAppSelector((state) => state.films);
   const filteredFilmsList = useAppSelector((state) => state.filteredFilms);
 
@@ -18,7 +13,7 @@ function MainScreen({name, genre, release} : MainScreenProps): JSX.Element {
     <React.Fragment>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel"/>
+          <img src={promo?.backgroundImage} alt={promo?.name}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -41,14 +36,14 @@ function MainScreen({name, genre, release} : MainScreenProps): JSX.Element {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327"/>
+              <img src={promo?.posterImage} alt={promo?.name && ' poster'} width="218" height="327"/>
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{name}</h2>
+              <h2 className="film-card__title">{promo?.name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{genre}</span>
-                <span className="film-card__year">{release}</span>
+                <span className="film-card__genre">{promo?.genre}</span>
+                <span className="film-card__year">{promo?.released}</span>
               </p>
 
               <div className="film-card__buttons">

@@ -16,14 +16,11 @@ const isCheckedAuth = (authorizationStatus: AuthorizationStatus): boolean =>
   authorizationStatus === AuthorizationStatus.Unknown;
 
 type AppScreenProps = {
-  name: string;
-  genre: string;
-  release: number;
   films: Films;
   filmsInfo: FilmInfo[];
 }
 
-function App({name, genre, release, films, filmsInfo}: AppScreenProps): JSX.Element {
+function App({films, filmsInfo}: AppScreenProps): JSX.Element {
   const {authorizationStatus, isDataLoaded} = useAppSelector((state) => state);
 
   if (isCheckedAuth(authorizationStatus) || isDataLoaded) {
@@ -37,7 +34,7 @@ function App({name, genre, release, films, filmsInfo}: AppScreenProps): JSX.Elem
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<MainScreen name={name} genre={genre} release={release} />}
+          element={<MainScreen />}
         />
         <Route
           path={AppRoute.Login}
