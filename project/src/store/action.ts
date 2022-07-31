@@ -4,7 +4,7 @@ import {Film, Films} from '../types/film';
 
 export const changeGenre = createAction<{genre: string}>('changeGenre');
 
-export const setFilter = createAction('films/getFilms');
+export const setFilter = createAction('films/setFilter');
 
 export const resetFilters = createAction('films/resetFilters');
 
