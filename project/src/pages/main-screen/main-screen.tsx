@@ -1,10 +1,13 @@
 import React from 'react';
-import {useAppSelector} from '../../hooks';
+import {useAppSelector, useAppDispatch} from '../../hooks';
 import FilmsList from '../../components/films-list/films-list';
 import GenresList from '../../components/genres-list/genres-list';
 import Logo from '../../components/logo/logo';
+import {logoutAction} from '../../store/api-actions';
+import {Link} from 'react-router-dom';
 
 function MainScreen(): JSX.Element {
+  const dispatch = useAppDispatch();
   const promo = useAppSelector((state) => state.promo);
   const filmsList = useAppSelector((state) => state.films);
   const filteredFilmsList = useAppSelector((state) => state.filteredFilms);
@@ -28,7 +31,16 @@ function MainScreen(): JSX.Element {
               </div>
             </li>
             <li className="user-block__item">
-              <a className="user-block__link" href="/">Sign out</a>
+              <Link
+                className="user-block__link"
+                onClick={(evt) => {
+                  evt.preventDefault();
+                  dispatch(logoutAction());
+                }}
+                to='/'
+              >
+                Sign out
+              </Link>
             </li>
           </ul>
         </header>

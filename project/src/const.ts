@@ -1,7 +1,5 @@
 export const DEFAULT_GENRE = 'All genres';
 
-export const TIMEOUT_SHOW_ERROR = 2000;
-
 export enum AppRoute {
   Login = '/login',
   MyList = '/mylist',
