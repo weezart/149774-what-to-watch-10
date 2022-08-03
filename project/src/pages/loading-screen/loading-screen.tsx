@@ -1,6 +1,8 @@
+import Spinner from '../../components/spinner/spinner';
+
 function LoadingScreen(): JSX.Element {
   return (
-    <p>Loading ...</p>
+    <Spinner />
   );
 }
 

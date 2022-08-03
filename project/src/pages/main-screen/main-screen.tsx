@@ -3,6 +3,7 @@ import {useAppSelector} from '../../hooks';
 import FilmsList from '../../components/films-list/films-list';
 import GenresList from '../../components/genres-list/genres-list';
 import Logo from '../../components/logo/logo';
+import Header from '../../components/header/header';
 
 function MainScreen(): JSX.Element {
   const promo = useAppSelector((state) => state.promo);
@@ -17,21 +18,7 @@ function MainScreen(): JSX.Element {
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
-
-        <header className="page-header film-card__head">
-          <Logo linkClass={'logo__link'} />
-
-          <ul className="user-block">
-            <li className="user-block__item">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-              </div>
-            </li>
-            <li className="user-block__item">
-              <a className="user-block__link" href="/">Sign out</a>
-            </li>
-          </ul>
-        </header>
+        <Header />
 
         <div className="film-card__wrap">
           <div className="film-card__info">
