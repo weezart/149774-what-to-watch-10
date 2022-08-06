@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
-import {changeGenre, setFilter, resetFilters, loadPromo, loadFilms, setDataLoadedStatus, requireAuthorization} from './action';
-import { DEFAULT_GENRE, AuthorizationStatus } from '../const';
+import {changeGenre, setFilter, resetFilters, loadPromo, loadFilms, setDataLoadedStatus, requireAuthorization, increaseFilmsCount} from './action';
+import { DEFAULT_GENRE, AuthorizationStatus, FILM_COUNT_PER_STEP } from '../const';
 import {Film, Films} from '../types/film';
 
 type InitialState = {
@@ -8,6 +8,7 @@ type InitialState = {
   promo: Film | null,
   films: Films,
   filteredFilms: Films,
+  filmsCount: number,
   authorizationStatus: AuthorizationStatus,
   isDataLoaded: boolean,
 }
@@ -17,6 +18,7 @@ const initialState: InitialState = {
   promo: null,
   films: [],
   filteredFilms: [],
+  filmsCount: FILM_COUNT_PER_STEP,
   authorizationStatus: AuthorizationStatus.Unknown,
   isDataLoaded: false,
 };
@@ -35,6 +37,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadPromo, (state, action) => {
       state.promo = action.payload;
+    })
+    .addCase(increaseFilmsCount, (state) => {
+      state.filmsCount += FILM_COUNT_PER_STEP;
     })
     .addCase(loadFilms, (state, action) => {
       state.films = action.payload;

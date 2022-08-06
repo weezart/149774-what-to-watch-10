@@ -8,6 +8,8 @@ export const setFilter = createAction('films/setFilter');
 
 export const resetFilters = createAction('films/resetFilters');
 
+export const increaseFilmsCount = createAction('films/increaseFilmsCount');
+
 export const loadFilms = createAction<Films>('data/loadFilms');
 
 export const loadPromo = createAction<Film>('data/loadPromo');
