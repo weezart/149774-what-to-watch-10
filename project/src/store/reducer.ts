@@ -30,9 +30,11 @@ const reducer = createReducer(initialState, (builder) => {
       state.genre = genre;
     })
     .addCase(setFilter, (state, action) => {
+      state.filmsCount = FILM_COUNT_PER_STEP;
       state.filteredFilms = [...state.films].filter((film) => film.genre === state.genre);
     })
     .addCase(resetFilters, (state, action) => {
+      state.filmsCount = FILM_COUNT_PER_STEP;
       state.filteredFilms = [...state.films];
     })
     .addCase(loadPromo, (state, action) => {

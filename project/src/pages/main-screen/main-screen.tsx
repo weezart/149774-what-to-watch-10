@@ -1,6 +1,7 @@
 import React from 'react';
 import {useAppSelector} from '../../hooks';
 import FilmsList from '../../components/films-list/films-list';
+import ShowMore from '../../components/show-more/show-more';
 import GenresList from '../../components/genres-list/genres-list';
 import Logo from '../../components/logo/logo';
 import Header from '../../components/header/header';
@@ -12,17 +13,7 @@ function MainScreen(): JSX.Element {
   const filteredFilmsCount = filteredFilmsList.length;
   const filmsCount = useAppSelector((state) => state.filmsCount);
   const correctFilmsCount = Math.min(filteredFilmsCount, filmsCount);
-  const renderedFilms = filteredFilmsList.slice(0, correctFilmsCount);
-  const getShowMoreBtn = () => {
-    if (filteredFilmsCount > filmsCount) {
-      return (
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
-      );
-    }
-    return null;
-  };
+  const renderedFilms = [...filteredFilmsList].slice(0, correctFilmsCount);
 
   return (
     <React.Fragment>
@@ -71,8 +62,7 @@ function MainScreen(): JSX.Element {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <GenresList films={filmsList}/>
           <FilmsList films={renderedFilms}/>
-
-          {getShowMoreBtn()}
+          <ShowMore isShowButton={filteredFilmsCount > filmsCount} />
         </section>
         <footer className="page-footer">
           <Logo linkClass={'logo__link logo__link--light'} />
