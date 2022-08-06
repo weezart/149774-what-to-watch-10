@@ -9,6 +9,20 @@ function MainScreen(): JSX.Element {
   const promo = useAppSelector((state) => state.promo);
   const filmsList = useAppSelector((state) => state.films);
   const filteredFilmsList = useAppSelector((state) => state.filteredFilms);
+  const filteredFilmsCount = filteredFilmsList.length;
+  const filmsCount = useAppSelector((state) => state.filmsCount);
+  const correctFilmsCount = Math.min(filteredFilmsCount, filmsCount);
+  const renderedFilms = filteredFilmsList.slice(0, correctFilmsCount);
+  const getShowMoreBtn = () => {
+    if (filteredFilmsCount > filmsCount) {
+      return (
+        <div className="catalog__more">
+          <button className="catalog__button" type="button">Show more</button>
+        </div>
+      );
+    }
+    return null;
+  };
 
   return (
     <React.Fragment>
@@ -27,7 +41,7 @@ function MainScreen(): JSX.Element {
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{promo?.name}</h2>
+              <h2 className="film-card__title">{promo?.name}  {correctFilmsCount}</h2>
               <p className="film-card__meta">
                 <span className="film-card__genre">{promo?.genre}</span>
                 <span className="film-card__year">{promo?.released}</span>
@@ -56,11 +70,9 @@ function MainScreen(): JSX.Element {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <GenresList films={filmsList}/>
-          <FilmsList films={filteredFilmsList}/>
+          <FilmsList films={renderedFilms}/>
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          {getShowMoreBtn()}
         </section>
         <footer className="page-footer">
           <Logo linkClass={'logo__link logo__link--light'} />
