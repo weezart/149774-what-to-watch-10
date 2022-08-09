@@ -5,7 +5,7 @@ import FilmDetails from '../film-details/film-details';
 import FilmReviews from '../film-reviews/film-reviews';
 
 type TabsProps = {
-  film: Film;
+  film: Film | null;
 };
 
 function Tabs({film} : TabsProps): JSX.Element {

@@ -1,24 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Logo from '../../components/logo/logo';
 import Header from '../../components/header/header';
 import FilmsList from '../../components/films-list/films-list';
 import Tabs from '../../components/tabs/tabs';
 import {useParams, Link} from 'react-router-dom';
-import {useAppSelector} from '../../hooks';
+import {useAppSelector, useAppDispatch} from '../../hooks';
+import { fetchFilmAction } from '../../store/api-actions';
 
 function MoviePageScreen(): JSX.Element {
+  const dispatch = useAppDispatch();
   const params = useParams();
-  const id = `${(params.id ? params.id.slice(1) : '0')}`;
+  const film = useAppSelector((state) => state.film);
   const films = useAppSelector((state) => state.films);
-  const film = films.find((item) => item.id === Number.parseInt(id, 10)) || films[0];
   const similarFilms = films.filter((filmA) => (filmA.genre === film?.genre) && filmA.id !== film?.id).slice(0, 4);
+
+  useEffect(() => {
+    dispatch(fetchFilmAction(params?.id));
+  }, [params?.id, dispatch]);
 
   return (
     <React.Fragment>
-      <section id={id} className="film-card film-card--full">
+      <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
-            <img src={film.backgroundImage} alt={film.name}/>
+            <img src={film?.backgroundImage} alt={film?.name}/>
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -27,10 +32,10 @@ function MoviePageScreen(): JSX.Element {
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title">{film.name}</h2>
+              <h2 className="film-card__title">{film?.name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{film.genre}</span>
-                <span className="film-card__year">{film.released}</span>
+                <span className="film-card__genre">{film?.genre}</span>
+                <span className="film-card__year">{film?.released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -47,7 +52,7 @@ function MoviePageScreen(): JSX.Element {
                   <span>My list</span>
                   <span className="film-card__count">9</span>
                 </button>
-                <Link to={`/films/:${film.id}/review`} className="btn film-card__button">Add review</Link>
+                <Link to={`/films/:${film?.id}/review`} className="btn film-card__button">Add review</Link>
               </div>
             </div>
           </div>
@@ -56,12 +61,12 @@ function MoviePageScreen(): JSX.Element {
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
-              <img src={film.posterImage} alt={film.name && ' poster'} width="218"
+              <img src={film?.posterImage} alt={film?.name && ' poster'} width="218"
                 height="327"
               />
             </div>
             <div className="film-card__desc">
-              <Tabs film={film} />
+              <Tabs film={film || null} />
             </div>
           </div>
         </div>

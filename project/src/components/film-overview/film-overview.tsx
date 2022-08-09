@@ -2,7 +2,7 @@ import { Film } from '../../types/film';
 import React from 'react';
 
 type FilmOverviewProps = {
-  film: Film;
+  film: Film | null;
 };
 
 const RATING_AWESOME = 10;
@@ -11,7 +11,7 @@ const RATING_GOOD = 5;
 const RATING_NORMAL = 5;
 
 function FilmOverview({film} : FilmOverviewProps): JSX.Element {
-  const getRatingLevel = (rating: number) => {
+  const getRatingLevel = (rating: number): string | null => {
     if (rating === RATING_AWESOME) {
       return 'Awesome';
     } else if (rating >= RATING_VERY_GOOD && rating < RATING_AWESOME) {
@@ -27,21 +27,21 @@ function FilmOverview({film} : FilmOverviewProps): JSX.Element {
   return (
     <React.Fragment>
       <div className="film-rating">
-        <div className="film-rating__score">{film.rating}</div>
+        <div className="film-rating__score">{film?.rating}</div>
         <p className="film-rating__meta">
-          <span className="film-rating__level">{getRatingLevel(film.rating)}</span>
-          <span className="film-rating__count">{film.scoresCount} ratings</span>
+          <span className="film-rating__level">{film?.rating !== undefined ? getRatingLevel(film.rating) : null}</span>
+          <span className="film-rating__count">{film?.scoresCount} ratings</span>
         </p>
       </div>
 
       <div className="film-card__text">
-        <p>{film.description}</p>
+        <p>{film?.description}</p>
 
-        <p className="film-card__director"><strong>Director: {film.director}</strong></p>
+        <p className="film-card__director"><strong>Director: {film?.director}</strong></p>
 
         <p className="film-card__starring">
           <strong>
-            Starring: {film.starring.join(', ')}
+            Starring: {film?.starring.join(', ')}
           </strong>
         </p>
       </div>
