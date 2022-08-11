@@ -5,17 +5,18 @@ import FilmsList from '../../components/films-list/films-list';
 import Tabs from '../../components/tabs/tabs';
 import {useParams, Link} from 'react-router-dom';
 import {useAppSelector, useAppDispatch} from '../../hooks';
-import { fetchFilmAction } from '../../store/api-actions';
+import { fetchFilmAction, fetchSimilarFilmsAction } from '../../store/api-actions';
 
 function MoviePageScreen(): JSX.Element {
   const dispatch = useAppDispatch();
   const params = useParams();
   const film = useAppSelector((state) => state.film);
-  const films = useAppSelector((state) => state.films);
-  const similarFilms = films.filter((filmA) => (filmA.genre === film?.genre) && filmA.id !== film?.id).slice(0, 4);
+  const similarFilms = useAppSelector((state) => state.similarFilms);
 
   useEffect(() => {
-    dispatch(fetchFilmAction(params?.id));
+    const id = `${(params.id ? params.id.slice(1) : '0')}`;
+    dispatch(fetchFilmAction(id));
+    dispatch(fetchSimilarFilmsAction(id));
   }, [params?.id, dispatch]);
 
   return (

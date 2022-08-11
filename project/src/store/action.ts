@@ -16,6 +16,8 @@ export const loadPromo = createAction<Film>('data/loadPromo');
 
 export const loadFilm = createAction<Film>('data/loadFilm');
 
+export const loadSimilarFilms = createAction<Films>('data/loadSimilarFilms');
+
 export const setDataLoadedStatus = createAction<boolean>('data/setDataLoadedStatus');
 
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');

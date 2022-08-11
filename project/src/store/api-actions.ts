@@ -2,7 +2,7 @@ import {AxiosInstance} from 'axios';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AppDispatch, State} from '../types/state.js';
 import {Film, Films} from '../types/film';
-import {loadFilm, loadFilms, loadPromo, requireAuthorization, setDataLoadedStatus, redirectToRoute} from './action';
+import {loadFilm, loadFilms, loadSimilarFilms, loadPromo, requireAuthorization, setDataLoadedStatus, redirectToRoute} from './action';
 import {saveToken, dropToken} from '../services/token';
 import {APIRoute, AuthorizationStatus, AppRoute} from '../const';
 import {AuthData} from '../types/auth-data';
@@ -29,9 +29,21 @@ export const fetchFilmAction = createAsyncThunk<void, string | undefined, {
 }>(
   'data/fetchFilm',
   async (id, {dispatch, extra: api}) => {
-    const filmId = `${id ? id.slice(1) : '0'}`;
-    const {data} = await api.get<Film>(`${APIRoute.Films}/${filmId}`);
+    const {data} = await api.get<Film>(`${APIRoute.Films}/${id}`);
     dispatch(loadFilm(data));
+  },
+);
+
+export const fetchSimilarFilmsAction = createAsyncThunk<void, string | undefined, {
+  dispatch: AppDispatch,
+  state: State,
+  extra: AxiosInstance
+}>(
+  'data/fetchSimilarFilms',
+  async (id, {dispatch, extra: api}) => {
+    const {data} = await api.get<Films>(`${APIRoute.Films}/${id}/similar`);
+    const filteredData = data.filter((film) => film.id !== Number(id)).slice(0, 4);
+    dispatch(loadSimilarFilms(filteredData));
   },
 );
 
