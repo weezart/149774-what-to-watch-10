@@ -5,7 +5,7 @@ import FilmsList from '../../components/films-list/films-list';
 import Tabs from '../../components/tabs/tabs';
 import {useParams, Link} from 'react-router-dom';
 import {useAppSelector, useAppDispatch} from '../../hooks';
-import { fetchFilmAction, fetchSimilarFilmsAction } from '../../store/api-actions';
+import {fetchFilmAction, fetchReviewsAction, fetchSimilarFilmsAction} from '../../store/api-actions';
 
 function MoviePageScreen(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -17,6 +17,7 @@ function MoviePageScreen(): JSX.Element {
     const id = `${(params.id ? params.id.slice(1) : '0')}`;
     dispatch(fetchFilmAction(id));
     dispatch(fetchSimilarFilmsAction(id));
+    dispatch(fetchReviewsAction(id));
   }, [params?.id, dispatch]);
 
   return (

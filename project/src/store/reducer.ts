@@ -5,6 +5,7 @@ import {
   resetFilters,
   loadPromo,
   loadFilm,
+  loadReviews,
   loadFilms,
   loadSimilarFilms,
   setDataLoadedStatus,
@@ -13,6 +14,7 @@ import {
 } from './action';
 import { DEFAULT_GENRE, AuthorizationStatus, FILM_COUNT_PER_STEP } from '../const';
 import {Film, Films} from '../types/film';
+import {Reviews} from '../types/review';
 
 type InitialState = {
   genre: string,
@@ -21,6 +23,7 @@ type InitialState = {
   films: Films,
   filteredFilms: Films,
   similarFilms: Films,
+  reviews: Reviews,
   filmsCount: number,
   authorizationStatus: AuthorizationStatus,
   isDataLoaded: boolean,
@@ -33,6 +36,7 @@ const initialState: InitialState = {
   films: [],
   filteredFilms: [],
   similarFilms: [],
+  reviews: [],
   filmsCount: FILM_COUNT_PER_STEP,
   authorizationStatus: AuthorizationStatus.Unknown,
   isDataLoaded: false,
@@ -67,6 +71,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadSimilarFilms, (state, action) => {
       state.similarFilms = action.payload;
+    })
+    .addCase(loadReviews, (state, action) => {
+      state.reviews = action.payload;
     })
     .addCase(setDataLoadedStatus, (state, action) => {
       state.isDataLoaded = action.payload;

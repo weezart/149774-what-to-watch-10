@@ -7,12 +7,12 @@ export enum AppRoute {
   Film = '/films/:id',
   AddReview = '/films/:id/review',
   Player = '/player/:id',
-  NotFound = '/notFound',
   Root = '/',
 }
 
 export enum APIRoute {
   Films = '/films',
+  Reviews = '/comments',
   Promo = '/promo',
   Login = '/login',
   Logout = '/logout',
