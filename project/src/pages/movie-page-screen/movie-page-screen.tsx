@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import Logo from '../../components/logo/logo';
 import Header from '../../components/header/header';
 import FilmsList from '../../components/films-list/films-list';
 import Tabs from '../../components/tabs/tabs';
-import {useParams, Link} from 'react-router-dom';
-import {useAppSelector, useAppDispatch} from '../../hooks';
+import {Link, useParams} from 'react-router-dom';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 import {fetchFilmAction, fetchReviewsAction, fetchSimilarFilmsAction} from '../../store/api-actions';
+import {AuthorizationStatus} from '../../const';
 
 function MoviePageScreen(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -13,6 +14,7 @@ function MoviePageScreen(): JSX.Element {
   const film = useAppSelector((state) => state.film);
   const reviews = useAppSelector((state) => state.reviews);
   const similarFilms = useAppSelector((state) => state.similarFilms);
+  const authStatus = useAppSelector((state) => state.authorizationStatus);
 
   useEffect(() => {
     const id = `${(params.id ? params.id.slice(1) : '0')}`;
@@ -55,7 +57,7 @@ function MoviePageScreen(): JSX.Element {
                   <span>My list</span>
                   <span className="film-card__count">9</span>
                 </button>
-                <Link to={`/films/:${film?.id}/review`} className="btn film-card__button">Add review</Link>
+                {authStatus === AuthorizationStatus.Auth ? <Link to={`/films/:${film?.id}/review`} className="btn film-card__button">Add review</Link> : null}
               </div>
             </div>
           </div>
