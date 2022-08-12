@@ -3,12 +3,14 @@ import React, {useState} from 'react';
 import FilmOverview from '../film-overview/film-overview';
 import FilmDetails from '../film-details/film-details';
 import FilmReviews from '../film-reviews/film-reviews';
+import {Reviews} from '../../types/review';
 
 type TabsProps = {
   film: Film | null;
+  reviews: Reviews;
 };
 
-function Tabs({film} : TabsProps): JSX.Element {
+function Tabs({film, reviews} : TabsProps): JSX.Element {
   const [activeTab, setActiveTab] = useState('Overview');
 
   const onTabClickHandler = (e: React.MouseEvent) => {
@@ -26,7 +28,7 @@ function Tabs({film} : TabsProps): JSX.Element {
       case 'Details':
         return <FilmDetails film={film} />;
       case 'Reviews':
-        return <FilmReviews />;
+        return <FilmReviews reviews={reviews} />;
     }
   };
 

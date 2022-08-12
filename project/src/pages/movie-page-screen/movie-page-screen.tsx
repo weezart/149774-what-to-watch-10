@@ -11,6 +11,7 @@ function MoviePageScreen(): JSX.Element {
   const dispatch = useAppDispatch();
   const params = useParams();
   const film = useAppSelector((state) => state.film);
+  const reviews = useAppSelector((state) => state.reviews);
   const similarFilms = useAppSelector((state) => state.similarFilms);
 
   useEffect(() => {
@@ -68,7 +69,7 @@ function MoviePageScreen(): JSX.Element {
               />
             </div>
             <div className="film-card__desc">
-              <Tabs film={film || null} />
+              <Tabs film={film || null} reviews={reviews} />
             </div>
           </div>
         </div>

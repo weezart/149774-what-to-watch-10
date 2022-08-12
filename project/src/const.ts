@@ -1,5 +1,6 @@
 export const DEFAULT_GENRE = 'All genres';
 export const FILM_COUNT_PER_STEP = 8;
+export const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 export enum AppRoute {
   Login = '/login',
