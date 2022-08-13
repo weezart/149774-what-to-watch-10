@@ -6,21 +6,32 @@ import Tabs from '../../components/tabs/tabs';
 import {Link, useParams} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {fetchFilmAction, fetchReviewsAction, fetchSimilarFilmsAction} from '../../store/api-actions';
-import {AuthorizationStatus} from '../../const';
+import {AppRoute, AuthorizationStatus} from '../../const';
+import {redirectToRoute} from '../../store/action';
 
 function MoviePageScreen(): JSX.Element {
   const dispatch = useAppDispatch();
   const params = useParams();
   const film = useAppSelector((state) => state.film);
+  const films = useAppSelector((state) => state.films);
   const reviews = useAppSelector((state) => state.reviews);
   const similarFilms = useAppSelector((state) => state.similarFilms);
   const authStatus = useAppSelector((state) => state.authorizationStatus);
+  const filmsIdData: Set<number> = new Set();
+
+  for (const filmsItem of films) {
+    filmsIdData.add(filmsItem.id);
+  }
 
   useEffect(() => {
     const id = `${(params.id ? params.id.slice(1) : '0')}`;
-    dispatch(fetchFilmAction(id));
-    dispatch(fetchSimilarFilmsAction(id));
-    dispatch(fetchReviewsAction(id));
+    if (filmsIdData.has(Number(id))) {
+      dispatch(fetchFilmAction(id));
+      dispatch(fetchSimilarFilmsAction(id));
+      dispatch(fetchReviewsAction(id));
+    } else {
+      dispatch(redirectToRoute(AppRoute.Error));
+    }
   }, [params?.id, dispatch]);
 
   return (

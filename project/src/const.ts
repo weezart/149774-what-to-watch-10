@@ -8,6 +8,7 @@ export enum AppRoute {
   Film = '/films/:id',
   AddReview = '/films/:id/review',
   Player = '/player/:id',
+  Error = '/error404',
   Root = '/',
 }
 
