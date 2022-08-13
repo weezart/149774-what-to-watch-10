@@ -7,6 +7,7 @@ export const changeGenre = createAction<{genre: string}>('changeGenre');
 
 export const setFilter = createAction('films/setFilter');
 
+
 export const resetFilters = createAction('films/resetFilters');
 
 export const increaseFilmsCount = createAction('films/increaseFilmsCount');
@@ -24,5 +25,7 @@ export const loadReviews = createAction<Reviews>('data/loadReviews');
 export const setDataLoadedStatus = createAction<boolean>('data/setDataLoadedStatus');
 
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
+
+export const setError = createAction<string | null | unknown>('user/setError');
 
 export const redirectToRoute = createAction<AppRoute>('films/redirectToRoute');
