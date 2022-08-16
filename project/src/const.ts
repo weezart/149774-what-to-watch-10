@@ -25,3 +25,9 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export enum NameSpace {
+  Data = 'DATA',
+  FILM = 'FILM',
+  User = 'USER',
+}

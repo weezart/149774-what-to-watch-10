@@ -9,7 +9,6 @@ import {
   loadFilms,
   loadSimilarFilms,
   setDataLoadedStatus,
-  requireAuthorization,
   increaseFilmsCount
 } from './action';
 import { DEFAULT_GENRE, AuthorizationStatus, FILM_COUNT_PER_STEP } from '../const';
@@ -25,7 +24,6 @@ type InitialState = {
   similarFilms: Films,
   reviews: Reviews,
   filmsCount: number,
-  authorizationStatus: AuthorizationStatus,
   isDataLoaded: boolean,
 }
 
@@ -38,7 +36,6 @@ const initialState: InitialState = {
   similarFilms: [],
   reviews: [],
   filmsCount: FILM_COUNT_PER_STEP,
-  authorizationStatus: AuthorizationStatus.Unknown,
   isDataLoaded: false,
 };
 
@@ -77,9 +74,6 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setDataLoadedStatus, (state, action) => {
       state.isDataLoaded = action.payload;
-    })
-    .addCase(requireAuthorization, (state, action) => {
-      state.authorizationStatus = action.payload;
     });
 });
 
