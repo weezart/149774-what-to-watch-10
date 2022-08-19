@@ -2,13 +2,7 @@ import {AxiosInstance} from 'axios';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AppDispatch, State} from '../types/state.js';
 import {
-  loadFilm,
-  loadFilms,
-  loadSimilarFilms,
-  loadPromo,
-  setDataLoadedStatus,
   redirectToRoute,
-  loadReviews,
   setError,
 } from './action';
 import {saveToken, dropToken} from '../services/token';
@@ -18,7 +12,7 @@ import {UserData} from '../types/user-data';
 import {Film, Films} from '../types/film';
 import {AddReview, Review, Reviews} from '../types/review';
 
-export const fetchPromoFilmAction = createAsyncThunk<void, undefined, {
+export const fetchPromoFilmAction = createAsyncThunk<Film, undefined, {
   dispatch: AppDispatch,
   state: State,
   extra: AxiosInstance
@@ -26,13 +20,11 @@ export const fetchPromoFilmAction = createAsyncThunk<void, undefined, {
   'data/fetchFilms',
   async (_arg, {dispatch, extra: api}) => {
     const {data} = await api.get<Film>(APIRoute.Promo);
-    dispatch(setDataLoadedStatus(true));
-    dispatch(loadPromo(data));
-    dispatch(setDataLoadedStatus(false));
+    return data;
   },
 );
 
-export const fetchFilmAction = createAsyncThunk<void, string | undefined, {
+export const fetchFilmAction = createAsyncThunk<Film, string | undefined, {
   dispatch: AppDispatch,
   state: State,
   extra: AxiosInstance
@@ -40,11 +32,11 @@ export const fetchFilmAction = createAsyncThunk<void, string | undefined, {
   'data/fetchFilm',
   async (id, {dispatch, extra: api}) => {
     const {data} = await api.get<Film>(`${APIRoute.Films}/${id}`);
-    dispatch(loadFilm(data));
+    return data;
   },
 );
 
-export const fetchSimilarFilmsAction = createAsyncThunk<void, string | undefined, {
+export const fetchSimilarFilmsAction = createAsyncThunk<Films, string | undefined, {
   dispatch: AppDispatch,
   state: State,
   extra: AxiosInstance
@@ -53,11 +45,11 @@ export const fetchSimilarFilmsAction = createAsyncThunk<void, string | undefined
   async (id, {dispatch, extra: api}) => {
     const {data} = await api.get<Films>(`${APIRoute.Films}/${id}/similar`);
     const filteredData = data.filter((film) => film.id !== Number(id)).slice(0, 4);
-    dispatch(loadSimilarFilms(filteredData));
+    return filteredData;
   },
 );
 
-export const fetchReviewsAction = createAsyncThunk<void, string | undefined, {
+export const fetchReviewsAction = createAsyncThunk<Reviews, string | undefined, {
   dispatch: AppDispatch,
   state: State,
   extra: AxiosInstance
@@ -65,7 +57,7 @@ export const fetchReviewsAction = createAsyncThunk<void, string | undefined, {
   'data/fetchFilm',
   async (id, {dispatch, extra: api}) => {
     const {data} = await api.get<Reviews>(`${APIRoute.Reviews}/${id}`);
-    dispatch(loadReviews(data));
+    return data;
   },
 );
 
@@ -84,7 +76,7 @@ export const addReviewAction = createAsyncThunk<void, [(string | undefined), Add
   },
   );
 
-export const fetchFilmsAction = createAsyncThunk<void, undefined, {
+export const fetchFilmsAction = createAsyncThunk<Films, undefined, {
   dispatch: AppDispatch,
   state: State,
   extra: AxiosInstance
@@ -92,9 +84,7 @@ export const fetchFilmsAction = createAsyncThunk<void, undefined, {
   'data/fetchFilms',
   async (_arg, {dispatch, extra: api}) => {
     const {data} = await api.get<Films>(APIRoute.Films);
-    dispatch(setDataLoadedStatus(true));
-    dispatch(loadFilms(data));
-    dispatch(setDataLoadedStatus(false));
+    return data;
   },
 );
 
