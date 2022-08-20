@@ -9,7 +9,7 @@ const initialState: PromoFilmData = {
   isDataLoading: false,
 };
 
-export const promoFilmProcess = createSlice({
+export const promoFilmData = createSlice({
   name: NameSpace.PromoFilm,
   initialState,
   reducers: {},

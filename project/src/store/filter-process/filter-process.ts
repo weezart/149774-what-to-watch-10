@@ -7,8 +7,8 @@ const initialState: FilterProcess = {
   filmsCount: FILM_COUNT_PER_STEP,
 };
 
-export const filterProcess = createSlice({
-  name: NameSpace.FilterProcess,
+export const filtersProcess = createSlice({
+  name: NameSpace.Filters,
   initialState,
   reducers: {
     changeGenre: (state, action) => {

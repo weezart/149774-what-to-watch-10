@@ -27,7 +27,7 @@ export enum AuthorizationStatus {
 }
 
 export enum NameSpace {
-  FilterProcess = 'FILTER_PROCESS',
+  Filters = 'FILTERS',
   Film = 'FILM',
   Films = 'FILMS',
   PromoFilm = 'PROMO_FILM',
