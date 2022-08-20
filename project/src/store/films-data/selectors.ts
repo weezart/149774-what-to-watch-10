@@ -1,4 +1,4 @@
-import { NameSpace} from '../../const';
+import { NameSpace, DEFAULT_GENRE} from '../../const';
 import { State } from '../../types/state';
 import { Films } from '../../types/film';
 import { createSelector } from 'reselect';
@@ -8,5 +8,11 @@ export const getLoadingDataStatus = (state: State): boolean => state[NameSpace.F
 export const getGenre = (state: State): string => state[NameSpace.Filters].genre;
 export const getFilteredFilms = createSelector(
   [getFilms, getGenre],
-  (films, genre) => films.filter((film) => film.genre === genre)
+  (films, genre) => {
+    if (genre === DEFAULT_GENRE ) {
+      return [...films];
+    } else {
+      return [...films].filter((film) => film.genre === genre);
+    }
+  }
 );

@@ -4,7 +4,6 @@ import {Films} from '../../types/film';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {getGenre} from '../../store/filter-process/selectors';
 import {changeGenre, setFilter, resetFilters} from '../../store/filter-process/filter-process';
-
 type GenresListProps = {
   films: Films;
 }
@@ -24,7 +23,7 @@ function GenresList({films}: GenresListProps): JSX.Element {
   for (const genre of genres) {
     const clickHandler = (evt: SyntheticEvent) => {
       evt.preventDefault();
-      dispatch(changeGenre({genre}));
+      dispatch(changeGenre(genre));
       if (genre === DEFAULT_GENRE) {
         dispatch(resetFilters());
       } else {
@@ -36,7 +35,7 @@ function GenresList({films}: GenresListProps): JSX.Element {
       <li
         onClick={clickHandler}
         key={genre}
-        className={`catalog__genres-item ${genre === currentGenre
+        className={`catalog__genres-item ${currentGenre} ${genre === currentGenre
           ? 'catalog__genres-item--active'
           : ''}`}
       >

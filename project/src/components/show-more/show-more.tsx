@@ -1,5 +1,5 @@
 import {useAppDispatch} from '../../hooks';
-import {increaseFilmsCount} from '../../store/action';
+import {increaseFilmsCount} from '../../store/filter-process/filter-process';
 import {SyntheticEvent} from 'react';
 
 type ShowMoreProps = {
