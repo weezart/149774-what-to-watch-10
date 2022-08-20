@@ -3,7 +3,6 @@ import { NameSpace } from '../../const';
 import { PromoFilmData } from '../../types/state';
 import { fetchPromoFilmAction } from '../api-actions';
 
-
 const initialState: PromoFilmData = {
   promoFilm: null,
   isDataLoading: false,

@@ -17,7 +17,7 @@ export const fetchPromoFilmAction = createAsyncThunk<Film, undefined, {
   state: State,
   extra: AxiosInstance
 }>(
-  'data/fetchFilms',
+  'data/fetchPromo',
   async (_arg, {dispatch, extra: api}) => {
     const {data} = await api.get<Film>(APIRoute.Promo);
     return data;

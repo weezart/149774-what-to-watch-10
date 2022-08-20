@@ -4,11 +4,12 @@ import {useParams} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {useEffect} from 'react';
 import {fetchFilmAction} from '../../store/api-actions';
+import { getFilm } from '../../store/film-data/selectors';
 
 function AddReviewScreen(): JSX.Element {
   const dispatch = useAppDispatch();
   const params = useParams();
-  const film = useAppSelector((state) => state.film);
+  const film = useAppSelector(getFilm);
 
   useEffect(() => {
     const id = `${(params.id ? params.id.slice(1) : '0')}`;

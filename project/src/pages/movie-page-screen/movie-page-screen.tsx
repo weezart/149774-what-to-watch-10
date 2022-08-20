@@ -6,17 +6,20 @@ import Tabs from '../../components/tabs/tabs';
 import {Link, useParams} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {fetchFilmAction, fetchReviewsAction, fetchSimilarFilmsAction} from '../../store/api-actions';
+import { getFilm, getReviews, getSimilarFilms } from '../../store/film-data/selectors';
+import { getFilms } from '../../store/films-data/selectors';
+import { getAuthorizationStatus } from '../../store/user-process/selectors';
 import {AppRoute, AuthorizationStatus} from '../../const';
 import {redirectToRoute} from '../../store/action';
 
 function MoviePageScreen(): JSX.Element {
   const dispatch = useAppDispatch();
   const params = useParams();
-  const film = useAppSelector((state) => state.film);
-  const films = useAppSelector((state) => state.films);
-  const reviews = useAppSelector((state) => state.reviews);
-  const similarFilms = useAppSelector((state) => state.similarFilms);
-  const authStatus = useAppSelector((state) => state.authorizationStatus);
+  const film = useAppSelector(getFilm);
+  const films = useAppSelector(getFilms);
+  const reviews = useAppSelector(getReviews);
+  const similarFilms = useAppSelector(getSimilarFilms);
+  const authStatus = useAppSelector(getAuthorizationStatus);
   const filmsIdData: Set<number> = new Set();
 
   for (const filmsItem of films) {

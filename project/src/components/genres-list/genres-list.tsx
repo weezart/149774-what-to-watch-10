@@ -2,7 +2,8 @@ import {SyntheticEvent} from 'react';
 import {DEFAULT_GENRE} from '../../const';
 import {Films} from '../../types/film';
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {changeGenre, setFilter, resetFilters} from '../../store/action';
+import {getGenre} from '../../store/filter-process/selectors';
+import {changeGenre, setFilter, resetFilters} from '../../store/filter-process/filter-process';
 
 type GenresListProps = {
   films: Films;
@@ -10,7 +11,7 @@ type GenresListProps = {
 
 function GenresList({films}: GenresListProps): JSX.Element {
   const dispatch = useAppDispatch();
-  const currentGenre = useAppSelector((state) => state.genre);
+  const currentGenre = useAppSelector(getGenre);
   const genres: Set<string> = new Set();
   const genreListItems = [];
 

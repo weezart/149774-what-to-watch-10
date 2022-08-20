@@ -25,3 +25,5 @@ export const filtersProcess = createSlice({
     },
   },
 });
+
+export const {changeGenre, setFilter, increaseFilmsCount, resetFilters} = filtersProcess.actions;
