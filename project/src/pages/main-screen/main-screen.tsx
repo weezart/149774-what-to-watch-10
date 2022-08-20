@@ -5,13 +5,16 @@ import ShowMore from '../../components/show-more/show-more';
 import GenresList from '../../components/genres-list/genres-list';
 import Logo from '../../components/logo/logo';
 import Header from '../../components/header/header';
+import { getPromoFilm } from '../../store/promo-film-data/selectors';
+import { getFilms, getFilteredFilms } from '../../store/films-data/selectors';
+import { getFilmsCount } from '../../store/filter-process/selectors';
 
 function MainScreen(): JSX.Element {
-  const promo = useAppSelector((state) => state.promo);
-  const filmsList = useAppSelector((state) => state.films);
-  const filteredFilmsList = useAppSelector((state) => state.filteredFilms);
+  const promo = useAppSelector(getPromoFilm);
+  const filmsList = useAppSelector(getFilms);
+  const filteredFilmsList = useAppSelector(getFilteredFilms);
   const filteredFilmsCount = filteredFilmsList.length;
-  const filmsCount = useAppSelector((state) => state.filmsCount);
+  const filmsCount = useAppSelector(getFilmsCount);
   const correctFilmsCount = Math.min(filteredFilmsCount, filmsCount);
   const renderedFilms = [...filteredFilmsList].slice(0, correctFilmsCount);
 

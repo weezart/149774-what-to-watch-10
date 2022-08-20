@@ -1,15 +1,22 @@
 import {useParams} from 'react-router-dom';
-import {useAppSelector} from '../../hooks';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import { getFilm } from '../../store/film-data/selectors';
+import {useEffect} from 'react';
+import {fetchFilmAction} from '../../store/api-actions';
 
 function PlayerScreen(): JSX.Element {
+  const dispatch = useAppDispatch();
   const params = useParams();
-  const id = `${(params.id ? params.id.slice(1) : '0')}`;
-  const films = useAppSelector((state) => state.films);
-  const film = films.find((item) => item.id === Number.parseInt(id, 10)) || films[0];
+  const film = useAppSelector(getFilm);
+
+  useEffect(() => {
+    const id = `${(params.id ? params.id.slice(1) : '0')}`;
+    dispatch(fetchFilmAction(id));
+  }, [params?.id, dispatch]);
 
   return (
     <div className="player">
-      <video src={film.videoLink} className="player__video" poster={film.previewImage}></video>
+      <video src={film?.videoLink} className="player__video" poster={film?.previewImage}></video>
 
       <button type="button" className="player__exit">Exit</button>
 

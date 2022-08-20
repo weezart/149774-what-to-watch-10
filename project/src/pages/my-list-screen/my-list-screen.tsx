@@ -2,9 +2,10 @@ import FilmsList from '../../components/films-list/films-list';
 import Logo from '../../components/logo/logo';
 import Header from '../../components/header/header';
 import {useAppSelector} from '../../hooks';
+import { getFilms } from '../../store/films-data/selectors';
 
 function MyListScreen(): JSX.Element {
-  const films = useAppSelector((state) => state.films);
+  const films = useAppSelector(getFilms);
 
   return (
     <div className="user-page">

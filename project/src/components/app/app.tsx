@@ -12,12 +12,15 @@ import PrivateRoute from '../private-route/private-route';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
 import HistoryRouter from '../history-route/history-route';
 import browserHistory from '../../browser-history';
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
+import {getLoadingDataStatus} from '../../store/films-data/selectors';
 
 const isCheckedAuth = (authorizationStatus: AuthorizationStatus): boolean =>
   authorizationStatus === AuthorizationStatus.Unknown;
 
 function App(): JSX.Element {
-  const {authorizationStatus, isDataLoaded} = useAppSelector((state) => state);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const isDataLoaded = useAppSelector(getLoadingDataStatus);
 
   if (isCheckedAuth(authorizationStatus) || isDataLoaded) {
     return (

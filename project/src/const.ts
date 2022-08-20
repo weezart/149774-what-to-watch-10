@@ -8,6 +8,7 @@ export enum AppRoute {
   Film = '/films/:id',
   AddReview = '/films/:id/review',
   Player = '/player/:id',
+  Error = '/error404',
   Root = '/',
 }
 
@@ -23,4 +24,13 @@ export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
+}
+
+export enum NameSpace {
+  Filters = 'FILTERS',
+  Film = 'FILM',
+  Films = 'FILMS',
+  PromoFilm = 'PROMO_FILM',
+  AddReview = 'ADD_REVIEW',
+  User = 'USER',
 }
