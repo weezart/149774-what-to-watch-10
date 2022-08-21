@@ -3,18 +3,19 @@ import Logo from '../../components/logo/logo';
 import Header from '../../components/header/header';
 import FilmsList from '../../components/films-list/films-list';
 import Tabs from '../../components/tabs/tabs';
-import {Link, useParams} from 'react-router-dom';
+import {Link, useParams, useNavigate} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {fetchFilmAction, fetchReviewsAction, fetchSimilarFilmsAction} from '../../store/api-actions';
 import { getFilm, getReviews, getSimilarFilms } from '../../store/film-data/selectors';
 import { getFilms } from '../../store/films-data/selectors';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
-import {AppRoute, AuthorizationStatus} from '../../const';
+import {APIRoute, AppRoute, AuthorizationStatus} from '../../const';
 import {redirectToRoute} from '../../store/action';
 
 function MoviePageScreen(): JSX.Element {
   const dispatch = useAppDispatch();
   const params = useParams();
+  const navigate = useNavigate();
   const film = useAppSelector(getFilm);
   const films = useAppSelector(getFilms);
   const reviews = useAppSelector(getReviews);
@@ -37,6 +38,11 @@ function MoviePageScreen(): JSX.Element {
     }
   }, [params?.id, dispatch]);
 
+  const onVideoButtonClickHandler = () => {
+    const path = `${APIRoute.Player}/:${film?.id}`;
+    navigate(path);
+  };
+
   return (
     <React.Fragment>
       <section className="film-card film-card--full">
@@ -58,15 +64,15 @@ function MoviePageScreen(): JSX.Element {
               </p>
 
               <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
+                <button className="btn btn--play film-card__button" type="button" onClick={onVideoButtonClickHandler}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
+                    <use xlinkHref="#play-s" />
                   </svg>
                   <span>Play</span>
                 </button>
                 <button className="btn btn--list film-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
+                    <use xlinkHref="#add" />
                   </svg>
                   <span>My list</span>
                   <span className="film-card__count">9</span>

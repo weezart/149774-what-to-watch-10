@@ -14,6 +14,7 @@ export enum AppRoute {
 
 export enum APIRoute {
   Films = '/films',
+  Player = '/player',
   Reviews = '/comments',
   Promo = '/promo',
   Login = '/login',

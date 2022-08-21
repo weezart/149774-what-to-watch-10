@@ -8,6 +8,8 @@ import Header from '../../components/header/header';
 import { getPromoFilm } from '../../store/promo-film-data/selectors';
 import { getFilms, getFilteredFilms } from '../../store/films-data/selectors';
 import { getFilmsCount } from '../../store/filter-process/selectors';
+import {APIRoute} from '../../const';
+import {useNavigate} from 'react-router-dom';
 
 function MainScreen(): JSX.Element {
   const promo = useAppSelector(getPromoFilm);
@@ -17,6 +19,12 @@ function MainScreen(): JSX.Element {
   const filmsCount = useAppSelector(getFilmsCount);
   const correctFilmsCount = Math.min(filteredFilmsCount, filmsCount);
   const renderedFilms = [...filteredFilmsList].slice(0, correctFilmsCount);
+  const navigate = useNavigate();
+
+  const onVideoButtonClickHandler = () => {
+    const path = `${APIRoute.Player}/:${promo?.id}`;
+    navigate(path);
+  };
 
   return (
     <React.Fragment>
@@ -42,7 +50,7 @@ function MainScreen(): JSX.Element {
               </p>
 
               <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
+                <button className="btn btn--play film-card__button" type="button" onClick={onVideoButtonClickHandler}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"/>
                   </svg>
