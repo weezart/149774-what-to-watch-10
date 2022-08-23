@@ -3,7 +3,9 @@ import {AppRoute} from '../const';
 
 export const setFilter = createAction<string>('films/setFilter');
 
-export const resetFilters = createAction('films/resetFilters');
+export const setFilm = createAction('film/setFilm',(value) => ({
+  payload: value,
+}));
 
 export const setError = createAction<string | null | unknown>('user/setError');
 

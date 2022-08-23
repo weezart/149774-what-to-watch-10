@@ -1,3 +1,4 @@
+export const ADDED_FILM_IN_LIST = true;
 export const DEFAULT_GENRE = 'All genres';
 export const FILM_COUNT_PER_STEP = 8;
 export const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -14,10 +15,12 @@ export enum AppRoute {
 
 export enum APIRoute {
   Films = '/films',
+  Player = '/player',
   Reviews = '/comments',
   Promo = '/promo',
   Login = '/login',
   Logout = '/logout',
+  Favorite = '/favorite',
 }
 
 export enum AuthorizationStatus {
@@ -32,5 +35,6 @@ export enum NameSpace {
   Films = 'FILMS',
   PromoFilm = 'PROMO_FILM',
   AddReview = 'ADD_REVIEW',
+  FavoriteFilms = 'FAVORITE_FILMS',
   User = 'USER',
 }

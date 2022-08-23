@@ -2,13 +2,17 @@ import FilmsList from '../../components/films-list/films-list';
 import Logo from '../../components/logo/logo';
 import Header from '../../components/header/header';
 import {useAppSelector} from '../../hooks';
-import { getFilms } from '../../store/films-data/selectors';
+import { getFavoriteFilms, getLoadingStatus } from '../../store/favorite-films-data/selectors';
+import Spinner from '../../components/spinner/spinner';
+import React from 'react';
 
 function MyListScreen(): JSX.Element {
-  const films = useAppSelector(getFilms);
+  const films = useAppSelector(getFavoriteFilms);
+  const isShowLoader = useAppSelector(getLoadingStatus);
 
   return (
     <div className="user-page">
+      { isShowLoader ? <Spinner /> : '' }
       <Header />
 
       <section className="catalog">

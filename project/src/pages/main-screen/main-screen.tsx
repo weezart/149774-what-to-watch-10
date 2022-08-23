@@ -5,9 +5,13 @@ import ShowMore from '../../components/show-more/show-more';
 import GenresList from '../../components/genres-list/genres-list';
 import Logo from '../../components/logo/logo';
 import Header from '../../components/header/header';
-import { getPromoFilm } from '../../store/promo-film-data/selectors';
+import MyListButton from '../../components/my-list-button/my-list-button';
+import { getPromoFilm, getLoadingDataStatus } from '../../store/promo-film-data/selectors';
 import { getFilms, getFilteredFilms } from '../../store/films-data/selectors';
 import { getFilmsCount } from '../../store/filter-process/selectors';
+import {APIRoute} from '../../const';
+import {useNavigate} from 'react-router-dom';
+import Spinner from '../../components/spinner/spinner';
 
 function MainScreen(): JSX.Element {
   const promo = useAppSelector(getPromoFilm);
@@ -17,9 +21,17 @@ function MainScreen(): JSX.Element {
   const filmsCount = useAppSelector(getFilmsCount);
   const correctFilmsCount = Math.min(filteredFilmsCount, filmsCount);
   const renderedFilms = [...filteredFilmsList].slice(0, correctFilmsCount);
+  const navigate = useNavigate();
+  const isShowLoader = useAppSelector(getLoadingDataStatus);
+
+  const onVideoButtonClickHandler = () => {
+    const path = `${APIRoute.Player}/:${promo?.id}`;
+    navigate(path);
+  };
 
   return (
     <React.Fragment>
+      { isShowLoader ? <Spinner /> : '' }
       <section className="film-card">
         <div className="film-card__bg">
           <img src={promo?.backgroundImage} alt={promo?.name}/>
@@ -42,19 +54,13 @@ function MainScreen(): JSX.Element {
               </p>
 
               <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
+                <button className="btn btn--play film-card__button" type="button" onClick={onVideoButtonClickHandler}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"/>
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list film-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"/>
-                  </svg>
-                  <span>My list</span>
-                  <span className="film-card__count">9</span>
-                </button>
+                <MyListButton filmId={promo?.id} />
               </div>
             </div>
           </div>

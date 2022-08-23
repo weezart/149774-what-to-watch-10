@@ -1,6 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {NameSpace} from '../../const';
 import {FilmData} from '../../types/state';
+import { setFilm } from '../action';
 import {fetchFilmAction, fetchSimilarFilmsAction, fetchReviewsAction} from '../api-actions';
 
 const initialState: FilmData = {
@@ -36,6 +37,9 @@ export const filmData = createSlice({
       .addCase(fetchReviewsAction.fulfilled, (state, action) => {
         state.reviews = action.payload;
         state.isDataLoading = false;
+      })
+      .addCase(setFilm, (state, action) => {
+        state.film = action.payload;
       });
   }
 });
