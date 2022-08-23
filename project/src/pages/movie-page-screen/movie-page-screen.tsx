@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import Logo from '../../components/logo/logo';
 import Header from '../../components/header/header';
 import FilmsList from '../../components/films-list/films-list';
+import MyListButton from '../../components/my-list-button/my-list-button';
 import Tabs from '../../components/tabs/tabs';
 import {Link, useParams, useNavigate} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../hooks';
@@ -70,13 +71,7 @@ function MoviePageScreen(): JSX.Element {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list film-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add" />
-                  </svg>
-                  <span>My list</span>
-                  <span className="film-card__count">9</span>
-                </button>
+                <MyListButton />
                 {authStatus === AuthorizationStatus.Auth ? <Link to={`/films/:${film?.id}/review`} className="btn film-card__button">Add review</Link> : null}
               </div>
             </div>

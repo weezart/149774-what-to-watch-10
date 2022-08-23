@@ -15,6 +15,11 @@ export type FilmsData = {
   isDataLoading: boolean;
 };
 
+export type FavoriteFilmsData = {
+  favoriteFilms: Films | [];
+  isDataLoading: boolean;
+};
+
 export type PromoFilmData = {
   promoFilm: Film | null;
   isDataLoading: boolean;
