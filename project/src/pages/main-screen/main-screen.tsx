@@ -6,11 +6,12 @@ import GenresList from '../../components/genres-list/genres-list';
 import Logo from '../../components/logo/logo';
 import Header from '../../components/header/header';
 import MyListButton from '../../components/my-list-button/my-list-button';
-import { getPromoFilm } from '../../store/promo-film-data/selectors';
+import { getPromoFilm, getLoadingDataStatus } from '../../store/promo-film-data/selectors';
 import { getFilms, getFilteredFilms } from '../../store/films-data/selectors';
 import { getFilmsCount } from '../../store/filter-process/selectors';
 import {APIRoute} from '../../const';
 import {useNavigate} from 'react-router-dom';
+import Spinner from '../../components/spinner/spinner';
 
 function MainScreen(): JSX.Element {
   const promo = useAppSelector(getPromoFilm);
@@ -21,6 +22,7 @@ function MainScreen(): JSX.Element {
   const correctFilmsCount = Math.min(filteredFilmsCount, filmsCount);
   const renderedFilms = [...filteredFilmsList].slice(0, correctFilmsCount);
   const navigate = useNavigate();
+  const isShowLoader = useAppSelector(getLoadingDataStatus);
 
   const onVideoButtonClickHandler = () => {
     const path = `${APIRoute.Player}/:${promo?.id}`;
@@ -29,6 +31,7 @@ function MainScreen(): JSX.Element {
 
   return (
     <React.Fragment>
+      { isShowLoader ? <Spinner /> : '' }
       <section className="film-card">
         <div className="film-card__bg">
           <img src={promo?.backgroundImage} alt={promo?.name}/>

@@ -7,17 +7,19 @@ import Tabs from '../../components/tabs/tabs';
 import {Link, useParams, useNavigate} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {fetchFilmAction, fetchReviewsAction, fetchSimilarFilmsAction} from '../../store/api-actions';
-import { getFilm, getReviews, getSimilarFilms } from '../../store/film-data/selectors';
+import { getFilm, getReviews, getSimilarFilms, getLoadingDataStatus } from '../../store/film-data/selectors';
 import { getFilms } from '../../store/films-data/selectors';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
 import {APIRoute, AppRoute, AuthorizationStatus} from '../../const';
 import {redirectToRoute} from '../../store/action';
+import Spinner from '../../components/spinner/spinner';
 
 function MoviePageScreen(): JSX.Element {
   const dispatch = useAppDispatch();
   const params = useParams();
   const navigate = useNavigate();
   const film = useAppSelector(getFilm);
+  const isShowLoader = useAppSelector(getLoadingDataStatus);
   const films = useAppSelector(getFilms);
   const reviews = useAppSelector(getReviews);
   const similarFilms = useAppSelector(getSimilarFilms);
@@ -46,6 +48,7 @@ function MoviePageScreen(): JSX.Element {
 
   return (
     <React.Fragment>
+      { isShowLoader ? <Spinner /> : '' }
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">

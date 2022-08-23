@@ -3,16 +3,18 @@ import {useAppDispatch, useAppSelector} from '../../hooks';
 import useVideoPlayer from '../../hooks/useVideoPlayer';
 import {useRef} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {getFilm} from '../../store/film-data/selectors';
+import {getFilm, getLoadingDataStatus} from '../../store/film-data/selectors';
 import {useEffect} from 'react';
 import {fetchFilmAction} from '../../store/api-actions';
 import {APIRoute} from '../../const';
+import LoadingScreen from '../loading-screen/loading-screen';
 
 function PlayerScreen(): JSX.Element {
   const dispatch = useAppDispatch();
   const params = useParams();
   const film = useAppSelector(getFilm);
   const navigate = useNavigate();
+  const isDataLoaded = useAppSelector(getLoadingDataStatus);
 
   useEffect(() => {
     const id = `${(params.id ? params.id.slice(1) : '0')}`;
@@ -32,6 +34,12 @@ function PlayerScreen(): JSX.Element {
     const path = `${APIRoute.Films}/:${film?.id}`;
     navigate(path);
   };
+
+  if (isDataLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
 
   return (
     <div className="player">
