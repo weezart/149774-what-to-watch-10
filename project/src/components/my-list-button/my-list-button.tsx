@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { getFavoriteFilmsLength } from '../../store/favorite-films-data/selectors';
-import { getFilmID, getFilmStatus } from '../../store/film-data/selectors';
+import { getFilmStatus } from '../../store/film-data/selectors';
 import { postFilmFavoriteStatusAction, fetchFilmsFavoriteAction } from '../../store/api-actions';
 import {
   AppRoute,
@@ -11,18 +11,21 @@ import { getAuthorizationStatus } from '../../store/user-process/selectors';
 import { FavoriteData } from '../../types/favorite-data';
 import { useNavigate } from 'react-router-dom';
 
-function MyListButton(): JSX.Element {
+type MyListButtonProps = {
+  filmId: number | null | undefined;
+}
+
+function MyListButton({filmId} : MyListButtonProps): JSX.Element {
   const favoriteCount = useAppSelector(getFavoriteFilmsLength);
   const dispatch = useAppDispatch();
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const navigate = useNavigate();
-  const filmID = useAppSelector(getFilmID);
   const filmStatus = useAppSelector(getFilmStatus);
 
   const handleMyListBtnClick = () => {
     if (authorizationStatus === AuthorizationStatus.Auth) {
       const data: FavoriteData = {
-        filmId: String(filmID),
+        filmId: String(filmId),
         filmStatus: filmStatus,
       };
       dispatch(postFilmFavoriteStatusAction(data));

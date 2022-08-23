@@ -71,7 +71,7 @@ function MoviePageScreen(): JSX.Element {
                   </svg>
                   <span>Play</span>
                 </button>
-                <MyListButton />
+                <MyListButton filmId={film?.id} />
                 {authStatus === AuthorizationStatus.Auth ? <Link to={`/films/:${film?.id}/review`} className="btn film-card__button">Add review</Link> : null}
               </div>
             </div>

@@ -5,6 +5,7 @@ import ShowMore from '../../components/show-more/show-more';
 import GenresList from '../../components/genres-list/genres-list';
 import Logo from '../../components/logo/logo';
 import Header from '../../components/header/header';
+import MyListButton from '../../components/my-list-button/my-list-button';
 import { getPromoFilm } from '../../store/promo-film-data/selectors';
 import { getFilms, getFilteredFilms } from '../../store/films-data/selectors';
 import { getFilmsCount } from '../../store/filter-process/selectors';
@@ -56,13 +57,7 @@ function MainScreen(): JSX.Element {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list film-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"/>
-                  </svg>
-                  <span>My list</span>
-                  <span className="film-card__count">9</span>
-                </button>
+                <MyListButton filmId={promo?.id} />
               </div>
             </div>
           </div>

@@ -127,14 +127,14 @@ export const logoutAction = createAsyncThunk<void, undefined, {
   },
 );
 
-export const fetchFilmsFavoriteAction = createAsyncThunk<Films | [], undefined, {
+export const fetchFilmsFavoriteAction = createAsyncThunk<Films, undefined, {
   dispatch: AppDispatch,
   state: State,
   extra: AxiosInstance
 }>(
   'data/fetchFilmsFavoriteAction',
   async (_arg, {extra: api}) => {
-    const {data} = await api.get<Films | []>(APIRoute.Favorite);
+    const {data} = await api.get<Films>(APIRoute.Favorite);
     return data;
   },
 );
