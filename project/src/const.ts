@@ -38,3 +38,8 @@ export enum NameSpace {
   FavoriteFilms = 'FAVORITE_FILMS',
   User = 'USER',
 }
+
+export enum ErrorMessage {
+  SignInValidate = 'We can’t recognize this email and password combination. Please try again.',
+  IncorrectEmail = 'Please enter a valid email address',
+}
