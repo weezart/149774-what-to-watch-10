@@ -1,5 +1,6 @@
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import VideoPlayer from '../video-player/video-player';
+import {APIRoute} from '../../const';
 
 type FilmCardProps = {
   id: number;
@@ -13,13 +14,20 @@ type FilmCardProps = {
 
 
 function FilmCard({id, name, image, video, isActive, makeCardActive, makeCardInactive} : FilmCardProps): JSX.Element {
+  const navigate = useNavigate();
+
+  const onImageClickHandler = () => {
+    const path = `${APIRoute.Films}/:${id}`;
+    navigate(path);
+  };
+
   return (
     <article
       className={`small-film-card catalog__films-card ${ isActive ? 'active' : ''}` }
       onMouseEnter={() => makeCardActive(id)}
       onMouseLeave={() => makeCardInactive()}
     >
-      <div className="small-film-card__image">
+      <div className="small-film-card__image" onClick={onImageClickHandler} style={{cursor: 'pointer'}}>
         {isActive ? (
           <VideoPlayer image={image} video={video} />
         ) : (
@@ -32,7 +40,7 @@ function FilmCard({id, name, image, video, isActive, makeCardActive, makeCardIna
         )}
       </div>
       <h3 className="small-film-card__title">
-        <Link className="small-film-card__link" to={`/films/:${id}`}>{name}</Link>
+        <Link className="small-film-card__link" to={`${APIRoute.Films}/:${id}`}>{name}</Link>
       </h3>
     </article>
   );

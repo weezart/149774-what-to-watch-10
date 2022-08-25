@@ -1,14 +1,33 @@
 import Logo from '../../components/logo/logo';
 import {useRef, FormEvent} from 'react';
-import {useAppDispatch} from '../../hooks';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 import {loginAction} from '../../store/api-actions';
 import {AuthData} from '../../types/auth-data';
+import {ErrorMessage} from '../../const';
+import {setAuthorizationError} from '../../store/user-process/user-process';
+import {getAuthorizationError} from '../../store/user-process/selectors';
+
 
 function SingInScreen(): JSX.Element {
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
+  const authorizationError = useAppSelector(getAuthorizationError);
 
   const dispatch = useAppDispatch();
+
+  const validateAuthorization = (email: string, password: string): string | null => {
+    const isEmailValid = /^\S+@\S+\.\S+$/.test(email);
+    const isPasswordValid = /^(?=^[a-zA-Z0-9]{2,}$)(?=.*\d)(?=.*[a-zA-Z]).*$/.test(password);
+
+    if (!isEmailValid) {
+      return ErrorMessage.IncorrectEmail;
+    }
+
+    if (!isPasswordValid) {
+      return ErrorMessage.SignInValidate;
+    }
+    return null;
+  };
 
   const onSubmit = (authData: AuthData) => {
     dispatch(loginAction(authData));
@@ -18,10 +37,18 @@ function SingInScreen(): JSX.Element {
     evt.preventDefault();
 
     if (loginRef.current !== null && passwordRef.current !== null) {
-      onSubmit({
-        login: loginRef.current.value,
-        password: passwordRef.current.value,
-      });
+      const validError = validateAuthorization(loginRef.current.value, passwordRef.current.value);
+
+      if (validError) {
+        dispatch(setAuthorizationError(validError));
+      } else {
+        onSubmit({
+          login: loginRef.current.value,
+          password: passwordRef.current.value,
+        });
+      }
+    } else {
+      dispatch(setAuthorizationError(ErrorMessage.SignInValidate));
     }
   };
 
@@ -39,12 +66,18 @@ function SingInScreen(): JSX.Element {
           className="sign-in__form"
           onSubmit={handleSubmit}
         >
+          {
+            authorizationError &&
+            <div className="sign-in__message">
+              <p data-testid="auth-error">{authorizationError}</p>
+            </div>
+          }
           <div className="sign-in__fields">
-            <div className="sign-in__field">
+            <div className={`sign-in__field ${ authorizationError === ErrorMessage.IncorrectEmail ? 'sign-in__field--error' : ''}`}>
               <input
                 ref={loginRef}
                 className="sign-in__input"
-                type="email"
+                type="text"
                 placeholder="Email address"
                 name="user-email"
                 id="user-email"

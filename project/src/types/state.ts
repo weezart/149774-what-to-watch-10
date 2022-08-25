@@ -35,7 +35,8 @@ export type FilterProcess = {
 };
 
 export type UserProcess = {
-  authorizationStatus: AuthorizationStatus
+  authorizationStatus: AuthorizationStatus;
+  authorizationError: string;
 };
 
 export type State = ReturnType<typeof store.getState>;
