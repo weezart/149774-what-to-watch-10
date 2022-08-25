@@ -5,11 +5,11 @@ export const useValidateReview = (review: string, rating: number) => {
   const [isValidReview, setIsValidReview] = useState<boolean>(false);
 
   useEffect(() => {
-    const validComment =
+    const validReview =
       review.length > ReviewLength.Min &&
       review.length < ReviewLength.Max;
 
-    if (validComment && rating > DEFAULT_RATING) {
+    if (validReview && rating > DEFAULT_RATING) {
       setIsValidReview(true);
     } else {
       setIsValidReview(false);
