@@ -1,8 +1,11 @@
 import React, {ChangeEvent, useState, FormEvent} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { APIRoute } from '../../const';
-import { useAppDispatch } from '../../hooks';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 import { addReviewAction } from '../../store/api-actions';
+import { getLoadingStatus } from '../../store/add-review-process/selectors';
+import { useValidateReview } from '../../hooks/useValidateReview';
+
 
 const ratingValues: number[] = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
@@ -10,10 +13,12 @@ function AddReviewForm(): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const params = useParams();
+  const isSending = useAppSelector(getLoadingStatus);
   const [formData, setFormData] = useState({
     rating: '',
     'review-text': '',
   });
+  const isValidReview = useValidateReview(formData['review-text'], Number(formData.rating));
 
   const fieldChangeHandler = (evt: ChangeEvent<(HTMLInputElement | HTMLTextAreaElement)>) => {
     const {name, value} = evt.target;
@@ -49,6 +54,7 @@ function AddReviewForm(): JSX.Element {
                     name="rating"
                     value={score}
                     checked={score === Number(formData.rating)}
+                    disabled={isSending}
                     onChange = {fieldChangeHandler}
                   />
                   <label className="rating__label" htmlFor={`star-${score}`}>Rating {score}</label>
@@ -66,9 +72,10 @@ function AddReviewForm(): JSX.Element {
             placeholder="Review text"
             value={formData['review-text']}
             onChange={fieldChangeHandler}
+            disabled={isSending}
           />
           <div className="add-review__submit">
-            <button className="add-review__btn" type="submit">Post</button>
+            <button className="add-review__btn" type="submit" disabled={isSending || !isValidReview}>Post</button>
           </div>
         </div>
       </form>
